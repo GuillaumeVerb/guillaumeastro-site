@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Astrologie — Guillaume Astro</title>
+<meta name="description" content="Articles d'astrologie pour mieux te comprendre en amour, en travail et dans ta vie. Analyses planétaires personnalisées.">
+<link rel="canonical" href="https://guillaumeastro.com/blog/">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#111118;--bg-el:#16161f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8888a0;--accent:#7c6af7;--accent2:#a395f9;--glow:rgba(124,106,247,0.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+#sf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.st{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,4s) ease-in-out infinite;opacity:0}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:var(--o,.4)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--accent2)}
+.ncta{background:var(--accent);color:#fff;border:none;padding:.5rem 1.1rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;transition:background .2s}
+.ncta:hover{background:var(--accent2)}
+section{position:relative;z-index:1}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.5rem}
+
+/* HERO */
+#hero{padding:9rem 0 4rem;text-align:center}
+.eyebrow{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;display:block}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;line-height:1.2;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--accent2)}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto}
+
+/* FILTERS */
+#filters{padding:2.5rem 0 1rem}
+.filter-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.filter-btn{background:var(--bg-el);border:1px solid var(--border);border-radius:999px;padding:.38rem .95rem;font-size:.79rem;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.filter-btn:hover,.filter-btn.active{background:rgba(124,106,247,.12);border-color:rgba(124,106,247,.3);color:var(--accent2)}
+
+/* ARTICLES GRID */
+#articles{padding:1rem 0 6rem}
+.grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.article-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.article-card:hover{border-color:rgba(124,106,247,.25);transform:translateY(-3px)}
+.card-top{padding:1.6rem 1.6rem 0}
+.card-tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.7rem;display:block}
+.card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;line-height:1.3;color:var(--text);margin-bottom:.6rem}
+.card-title em{font-style:italic;color:var(--accent2)}
+.card-excerpt{font-size:.84rem;color:var(--muted);line-height:1.65;flex:1}
+.card-bottom{padding:1.2rem 1.6rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);margin-top:1.2rem}
+.card-date{font-size:.73rem;color:var(--muted)}
+.card-arrow{font-size:.8rem;color:var(--accent2)}
+
+/* FEATURED */
+.featured{grid-column:1/-1 !important}
+@media(min-width:640px){
+.featured .card-top{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;padding:2rem 2rem 0}
+.featured .card-title{font-size:1.5rem}
+.featured .card-excerpt{font-size:.9rem}
+}
+
+/* CTA BAND */
+#cta-band{padding:5rem 0;text-align:center;border-top:1px solid var(--border)}
+.cta-band-inner{background:linear-gradient(135deg,rgba(124,106,247,.08),rgba(10,10,15,.4));border:1px solid rgba(124,106,247,.18);border-radius:20px;padding:3rem 2rem}
+.cta-band-inner h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.8rem}
+.cta-band-inner h2 em{font-style:italic;color:var(--accent2)}
+.cta-band-inner p{color:var(--muted);font-size:.94rem;margin-bottom:1.8rem;max-width:480px;margin-left:auto;margin-right:auto}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:.9rem 2rem;border-radius:8px;font-size:.94rem;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 0 24px var(--glow)}
+.btn:hover{background:var(--accent2);transform:translateY(-2px)}
+
+footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:.7rem}
+.flogo em{font-style:italic;color:var(--accent2)}
+footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div id="sf"></div>
+
+<nav>
+  <a href="https://guillaumeastro.com" class="logo">Guillaume<em>Astro</em></a>
+  <div class="nav-links">
+    <a href="https://guillaumeastro.com/blog/" class="active">Blog</a>
+    <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
+    <a href="https://guillaumeastro.com/blog/red-flags-astrologiques" class="ncta">Red Flags — 12€</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="wrap">
+    <span class="eyebrow">Astrologie &amp; connaissance de soi</span>
+    <h1>Comprendre tes astres,<br><em>comprendre ta vie</em></h1>
+    <p class="hero-sub">Des analyses planétaires pour aller au-delà du signe solaire — amour, patterns, timing, mission de vie.</p>
+  </div>
+</section>
+
+<section id="filters">
+  <div class="wrap">
+    <div class="filter-row">
+      <button class="filter-btn active" data-cat="all">Tous</button>
+      <button class="filter-btn" data-cat="amour">Amour &amp; relations</button>
+      <button class="filter-btn" data-cat="planetes">Planètes</button>
+      <button class="filter-btn" data-cat="maisons">Maisons</button>
+      <button class="filter-btn" data-cat="transits">Transits</button>
+    </div>
+  </div>
+</section>
+
+<section id="articles">
+  <div class="wrap">
+    <div class="grid" id="article-grid">
+
+      <!-- FEATURED -->
+      <a href="./venus-scorpion-relation-amoureuse.html" class="article-card featured" data-cat="amour planetes">
+        <div class="card-top">
+          <div>
+            <span class="card-tag">Amour &amp; relations</span>
+            <div class="card-title">Vénus en Scorpion :<br><em>pourquoi tu aimes</em> si intensément</div>
+          </div>
+          <p class="card-excerpt">Vénus en Scorpion ne fait rien à moitié. Cette position planétaire crée des attirances magnétiques, des jalousies profondes, et une capacité à transformer les relations en expériences de vie majeures. Tout ce que ça révèle sur tes patterns amoureux.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-date">Mars 2025</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- ARTICLE 2 -->
+      <a href="#" class="article-card" data-cat="planetes">
+        <div class="card-top">
+          <span class="card-tag">Planètes</span>
+          <div class="card-title">La <em>Lune natale</em> : ce qu'elle dit de tes besoins émotionnels</div>
+          <p class="card-excerpt">La Lune est le point le plus personnel de ton thème. Elle révèle comment tu gères tes émotions, ce dont tu as besoin pour te sentir en sécurité, et pourquoi tu réagis comme tu réagis.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-date">Fév. 2025</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- ARTICLE 3 -->
+      <a href="#" class="article-card" data-cat="maisons">
+        <div class="card-top">
+          <span class="card-tag">Maisons</span>
+          <div class="card-title">Maison 7 : le miroir de <em>l'autre</em> dans ton thème</div>
+          <p class="card-excerpt">La Maison 7 ne dit pas juste ce que tu cherches chez un partenaire. Elle révèle une partie de toi que tu projettes sur les autres — et pourquoi tu attires toujours le même profil.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-date">Fév. 2025</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- ARTICLE 4 -->
+      <a href="#" class="article-card" data-cat="transits">
+        <div class="card-top">
+          <span class="card-tag">Transits</span>
+          <div class="card-title">Saturne en transit : <em>la grande remise en question</em></div>
+          <p class="card-excerpt">Quand Saturne touche un point sensible de ton thème natal, tout ce qui n'est pas solide s'effondre. Pas pour te punir — pour te recentrer sur ce qui compte vraiment.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-date">Jan. 2025</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- ARTICLE 5 -->
+      <a href="#" class="article-card" data-cat="amour">
+        <div class="card-top">
+          <span class="card-tag">Amour &amp; relations</span>
+          <div class="card-title">Mars en carré Vénus : <em>l'attraction explosive</em></div>
+          <p class="card-excerpt">C'est l'aspect de la tension sexuelle et des conflits passionnés. Pourquoi certaines relations te font vibrer mais t'épuisent en même temps — et ce que ça dit de tes patterns.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-date">Jan. 2025</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <h2>Ton thème natal,<br><em>analysé en profondeur</em></h2>
+      <p>Découvre tes schémas amoureux inconscients avec un rapport PDF personnalisé à partir de ta date de naissance.</p>
+      <a href="https://astro-red-flags.guillaumeastro.com" class="btn">Découvrir mes red flags — 12€ →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flogo">Guillaume<em>Astro</em></div>
+    <p>© 2025 · Analyses astrologiques personnalisées</p>
+    <p><a href="mailto:contact@guillaumeastro.com">contact@guillaumeastro.com</a> · <a href="#">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var el=document.getElementById('sf');
+  for(var i=0;i<100;i++){
+    var s=document.createElement('div');s.className='st';
+    var sz=Math.random()*2+.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--d:'+(3+Math.random()*5)+'s;--o:'+(0.15+Math.random()*0.4)+';animation-delay:'+(Math.random()*6)+'s';
+    el.appendChild(s);
+  }
+})();
+
+// FILTERS
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    var cat=btn.dataset.cat;
+    document.querySelectorAll('.article-card').forEach(function(card){
+      if(cat==='all'||card.dataset.cat.includes(cat)){
+        card.style.display='flex';
+      } else {
+        card.style.display='none';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

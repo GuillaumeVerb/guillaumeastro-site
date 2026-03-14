@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ARTICLE_TITLE}} — Guillaume Astro</title>
+<meta name="description" content="{{ARTICLE_META_DESCRIPTION}}">
+<meta name="keywords" content="{{ARTICLE_KEYWORDS}}">
+<link rel="canonical" href="https://guillaumeastro.com/blog/{{ARTICLE_SLUG}}">
+<meta property="og:title" content="{{ARTICLE_TITLE}}">
+<meta property="og:description" content="{{ARTICLE_META_DESCRIPTION}}">
+<meta property="og:type" content="article">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ARTICLE_TITLE}}",
+  "description": "{{ARTICLE_META_DESCRIPTION}}",
+  "author": {"@type": "Person", "name": "Guillaume Astro"},
+  "publisher": {"@type": "Organization", "name": "Guillaume Astro", "url": "https://guillaumeastro.com"},
+  "datePublished": "{{ARTICLE_DATE_ISO}}",
+  "url": "https://guillaumeastro.com/blog/{{ARTICLE_SLUG}}"
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#111118;--bg-el:#16161f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8888a0;--accent:#7c6af7;--accent2:#a395f9;--glow:rgba(124,106,247,0.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+#sf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.st{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,4s) ease-in-out infinite;opacity:0}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:var(--o,.4)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent2)}
+.ncta{background:var(--accent);color:#fff !important;padding:.5rem 1.1rem;border-radius:6px;font-size:.84rem;font-weight:500 !important;text-decoration:none;transition:background .2s}
+.ncta:hover{background:var(--accent2) !important}
+section{position:relative;z-index:1}
+.wrap{max-width:720px;margin:0 auto;padding:0 1.5rem}
+#art-header{padding:9rem 0 3rem;text-align:center}
+.breadcrumb{font-size:.74rem;color:var(--muted);margin-bottom:1.5rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent2)}
+.art-tag{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;display:block}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:600;line-height:1.2;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--accent2)}
+.art-meta{font-size:.8rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap}
+.art-meta span::before{content:"· ";opacity:.5}
+.art-meta span:first-child::before{content:""}
+#art-body{padding:1rem 0 4rem}
+.art-content p{font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.4rem}
+.art-content p strong{color:var(--text);font-weight:500}
+.art-content h2{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:600;color:var(--text);line-height:1.25;margin:2.8rem 0 1rem}
+.art-content h2 em{font-style:italic;color:var(--accent2)}
+.art-content h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text);margin:2rem 0 .7rem}
+.art-content ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.4rem}
+.art-content ul li{font-size:.95rem;color:var(--muted);display:flex;gap:.7rem;align-items:flex-start;line-height:1.7}
+.art-content ul li::before{content:"◆";color:var(--accent2);font-size:.55rem;margin-top:.5rem;flex-shrink:0}
+.pull-quote{border-left:3px solid var(--accent2);padding:1.2rem 1.6rem;margin:2.2rem 0;background:rgba(124,106,247,.06);border-radius:0 10px 10px 0}
+.pull-quote p{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.6;margin:0}
+.planet-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.8rem;margin:2.2rem 0}
+.planet-box-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:.8rem}
+.planet-box p{font-size:.88rem;color:var(--muted);line-height:1.72;margin:0}
+.inline-cta{background:linear-gradient(135deg,rgba(124,106,247,.1),rgba(10,10,15,.5));border:1px solid rgba(124,106,247,.2);border-radius:16px;padding:2rem;text-align:center;margin:3rem 0}
+.inline-cta p{font-size:.9rem;color:var(--muted);margin-bottom:1.2rem}
+.inline-cta h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.6rem}
+.btn-cta{display:inline-block;background:var(--accent);color:#fff;padding:.85rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 0 20px var(--glow)}
+.btn-cta:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-cta-sub{font-size:.74rem;color:var(--muted);margin-top:.6rem}
+#related{padding:3rem 0 5rem;border-top:1px solid var(--border)}
+#related h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:1.6rem}
+#related h2 em{font-style:italic;color:var(--accent2)}
+.related-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:560px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+.rel-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.4rem;text-decoration:none;display:block;transition:border-color .2s}
+.rel-card:hover{border-color:rgba(124,106,247,.25)}
+.rel-tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.5rem;display:block}
+.rel-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text);line-height:1.3}
+.rel-title em{font-style:italic;color:var(--accent2)}
+footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:.7rem}
+.flogo em{font-style:italic;color:var(--accent2)}
+footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div id="sf"></div>
+<nav>
+  <a href="https://guillaumeastro.com" class="logo">Guillaume<em>Astro</em></a>
+  <div class="nav-links">
+    <a href="./index.html" class="active">Blog</a>
+    <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
+    <a href="{{CTA_PRODUCT_URL}}" class="ncta">{{CTA_PRODUCT_LABEL}}</a>
+  </div>
+</nav>
+
+<section id="art-header">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="./index.html">Blog</a> › {{ARTICLE_CATEGORY}}</div>
+    <span class="art-tag">{{ARTICLE_CATEGORY}} · {{ARTICLE_SUBCATEGORY}}</span>
+    <h1>{{ARTICLE_TITLE_HTML}}</h1>
+    <div class="art-meta">
+      <span>Guillaume Astro</span>
+      <span>{{ARTICLE_DATE_FR}}</span>
+      <span>{{ARTICLE_READ_TIME}} min de lecture</span>
+    </div>
+  </div>
+</section>
+
+<section id="art-body">
+  <div class="wrap">
+    <div class="art-content">
+      {{ARTICLE_BODY_HTML}}
+
+      <!-- CTA INLINE — à placer au 2/3 de l'article -->
+      <div class="inline-cta">
+        <h3>{{CTA_INLINE_TITLE}}</h3>
+        <p>{{CTA_INLINE_TEXT}}</p>
+        <a href="{{CTA_PRODUCT_URL}}" class="btn-cta">{{CTA_INLINE_BTN}}</a>
+        <p class="btn-cta-sub">✓ Livré par email en 5 min · Satisfait ou remboursé 7 jours</p>
+      </div>
+
+      {{ARTICLE_BODY_HTML_END}}
+    </div>
+  </div>
+</section>
+
+<section id="related">
+  <div class="wrap">
+    <h2>Articles <em>liés</em></h2>
+    <div class="related-grid">
+      {{RELATED_ARTICLES_HTML}}
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flogo">Guillaume<em>Astro</em></div>
+    <p>© 2025 · Analyses astrologiques personnalisées</p>
+    <p><a href="mailto:contact@guillaumeastro.com">contact@guillaumeastro.com</a> · <a href="#">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var el=document.getElementById('sf');
+  for(var i=0;i<80;i++){
+    var s=document.createElement('div');s.className='st';
+    var sz=Math.random()*2+.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--d:'+(3+Math.random()*5)+'s;--o:'+(0.15+Math.random()*0.35)+';animation-delay:'+(Math.random()*6)+'s';
+    el.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
+
+<!--
+VARIABLES À REMPLACER PAR LE CONTENT CREATOR :
+
+{{ARTICLE_SLUG}}              → ex: venus-scorpion-relation-amoureuse
+{{ARTICLE_TITLE}}             → titre texte (pour meta)
+{{ARTICLE_TITLE_HTML}}        → titre avec balises <em> pour l'italic coloré
+{{ARTICLE_META_DESCRIPTION}}  → 150 chars max pour SEO
+{{ARTICLE_KEYWORDS}}          → 5-8 mots-clés séparés par virgules
+{{ARTICLE_CATEGORY}}          → ex: Amour &amp; relations
+{{ARTICLE_SUBCATEGORY}}       → ex: Planètes
+{{ARTICLE_DATE_ISO}}          → ex: 2025-03-15
+{{ARTICLE_DATE_FR}}           → ex: Mars 2025
+{{ARTICLE_READ_TIME}}         → ex: 8
+{{ARTICLE_BODY_HTML}}         → contenu avant le CTA inline (p, h2, h3, ul, .pull-quote, .planet-box)
+{{ARTICLE_BODY_HTML_END}}     → contenu après le CTA inline
+{{CTA_PRODUCT_URL}}           → ex: https://astro-red-flags.guillaumeastro.com
+{{CTA_PRODUCT_LABEL}}         → ex: Red Flags — 12€
+{{CTA_INLINE_TITLE}}          → titre du bloc CTA dans l'article
+{{CTA_INLINE_TEXT}}           → description du CTA (1-2 phrases)
+{{CTA_INLINE_BTN}}            → texte du bouton CTA
+{{RELATED_ARTICLES_HTML}}     → 2 blocs .rel-card avec liens et titres
+-->

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guillaume Astro — Astrologie personnalisée</title>
+<meta name="description" content="Analyses astrologiques personnalisées — rapports PDF, newsletter transits, compatibilité. Comprends ton thème natal au-delà du signe solaire.">
+<link rel="canonical" href="https://guillaumeastro.com/">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#111118;--bg-el:#16161f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8888a0;--accent:#7c6af7;--accent2:#a395f9;--glow:rgba(124,106,247,0.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+#sf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.st{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,4s) ease-in-out infinite;opacity:0}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:var(--o,.4)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.ncta{background:var(--accent);color:#fff !important;padding:.5rem 1.1rem;border-radius:6px;font-size:.84rem;font-weight:500 !important;text-decoration:none;transition:background .2s}
+.ncta:hover{background:var(--accent2) !important}
+
+section{position:relative;z-index:1}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.5rem}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 5rem;text-align:center}
+#hero .wrap{width:100%}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-el);border:1px solid var(--border);border-radius:999px;padding:.38rem 1rem;font-size:.79rem;color:var(--muted);margin-bottom:2rem}
+.bd{width:6px;height:6px;background:var(--accent2);border-radius:50%;animation:pu 2s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4rem);font-weight:600;line-height:1.15;margin-bottom:1.4rem}
+h1 em{font-style:italic;color:var(--accent2)}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:520px;margin:0 auto 2.6rem;line-height:1.85}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:.95rem 2rem;border-radius:8px;font-size:.96rem;font-weight:500;text-decoration:none;box-shadow:0 0 28px var(--glow);animation:gp 3s ease-in-out infinite;transition:transform .15s}
+.btn-primary:hover{transform:translateY(-2px)}
+@keyframes gp{0%,100%{box-shadow:0 0 22px var(--glow)}50%{box-shadow:0 0 44px rgba(124,106,247,.3)}}
+.btn-secondary{display:inline-block;background:transparent;color:var(--text);padding:.95rem 2rem;border-radius:8px;font-size:.96rem;font-weight:400;text-decoration:none;border:1px solid var(--border);transition:border-color .2s,color .2s}
+.btn-secondary:hover{border-color:rgba(124,106,247,.3);color:var(--accent2)}
+.hero-proof{margin-top:1.4rem;font-size:.78rem;color:var(--muted);display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+
+/* SECTION */
+.sl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:.9rem;display:block}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;line-height:1.2;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--accent2)}
+
+/* PRODUCTS */
+#produits{padding:6rem 0}
+.products-intro{text-align:center;margin-bottom:3rem}
+.products-intro p{color:var(--muted);font-size:.96rem;max-width:500px;margin:.6rem auto 0}
+.products-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:640px){.products-grid{grid-template-columns:repeat(3,1fr)}}
+
+.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2rem;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:.7}
+.product-card:hover{border-color:rgba(255,255,255,.12);transform:translateY(-4px)}
+.product-card.featured{border-color:rgba(124,106,247,.2);background:linear-gradient(135deg,rgba(124,106,247,.07),var(--bg-card))}
+.product-icon{font-size:1.8rem;margin-bottom:1rem}
+.product-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
+.product-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.6rem;line-height:1.3}
+.product-name em{font-style:italic}
+.product-desc{font-size:.84rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1.4rem}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--text)}
+.product-price span{font-size:.75rem;font-family:'DM Sans',sans-serif;color:var(--muted);font-weight:300}
+.product-arrow{font-size:.8rem;color:var(--accent2)}
+
+/* RED FLAGS card */
+.card-rf{--card-accent:#c0392b}
+.card-rf .product-name em{color:#e74c3c}
+.card-rf .product-arrow,.card-rf .product-label{color:#e74c3c}
+
+/* TRANSITS card */
+.card-tr{--card-accent:#2e9e7a}
+.card-tr .product-name em{color:#3dbf94}
+.card-tr .product-arrow,.card-tr .product-label{color:#3dbf94}
+
+/* ASTROMATCH card */
+.card-am{--card-accent:#7c6af7}
+
+/* ABOUT */
+#about{padding:5rem 0;border-top:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media(min-width:640px){.about-grid{grid-template-columns:1fr 1fr}}
+.about-text p{font-size:.96rem;color:var(--muted);line-height:1.85;margin-bottom:1.1rem}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{color:var(--text);font-weight:500}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.about-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.4rem;text-align:center}
+.about-stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--accent2);line-height:1;margin-bottom:.3rem}
+.about-stat-l{font-size:.76rem;color:var(--muted)}
+
+/* BLOG */
+#blog-preview{padding:5rem 0;border-top:1px solid var(--border)}
+.blog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.blog-link{font-size:.84rem;color:var(--accent2);text-decoration:none}
+.blog-link:hover{text-decoration:underline}
+.blog-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:560px){.blog-grid{grid-template-columns:repeat(3,1fr)}}
+.blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-decoration:none;display:block;transition:border-color .2s}
+.blog-card:hover{border-color:rgba(124,106,247,.2)}
+.blog-tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.6rem;display:block}
+.blog-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:.5rem}
+.blog-title em{font-style:italic;color:var(--accent2)}
+.blog-date{font-size:.72rem;color:var(--muted)}
+
+/* TIKTOK */
+#tiktok{padding:4rem 0;border-top:1px solid var(--border);text-align:center}
+.tiktok-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;max-width:540px;margin:0 auto}
+.tiktok-inner h2{font-size:1.5rem;margin-bottom:.6rem}
+.tiktok-inner p{font-size:.9rem;color:var(--muted);margin-bottom:1.4rem}
+.btn-tiktok{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-el);border:1px solid var(--border);color:var(--text);padding:.75rem 1.5rem;border-radius:8px;font-size:.9rem;text-decoration:none;transition:border-color .2s}
+.btn-tiktok:hover{border-color:rgba(124,106,247,.3)}
+
+footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:.7rem}
+.flogo em{font-style:italic;color:var(--accent2)}
+footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div id="sf"></div>
+
+<nav>
+  <a href="/" class="logo">Guillaume<em>Astro</em></a>
+  <div class="nav-links">
+    <a href="https://guillaumeastro.com/blog/">Blog</a>
+    <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
+    <a href="https://astro-red-flags.guillaumeastro.com" class="ncta">Red Flags — 12€</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="badge"><span class="bd"></span>35 000 abonnés TikTok · Analyses planétaires</div>
+    <h1>Ton thème natal,<br><em>enfin expliqué</em><br>pour de vrai</h1>
+    <p class="hero-sub">Au-delà du signe solaire — des rapports personnalisés et des analyses hebdomadaires pour comprendre tes patterns amoureux, ta mission de vie, et tes cycles.</p>
+    <div class="hero-ctas">
+      <a href="https://astro-red-flags.guillaumeastro.com" class="btn-primary">Découvrir mes red flags — 12€ →</a>
+      <a href="https://guillaumeastro.com/blog/" class="btn-secondary">Lire le blog</a>
+    </div>
+    <div class="hero-proof">
+      <span>✓ 800+ rapports générés</span>
+      <span>✓ Livré en 5 min</span>
+      <span>✓ Satisfait ou remboursé</span>
+    </div>
+  </div>
+</section>
+
+<section id="produits">
+  <div class="wrap">
+    <div class="products-intro">
+      <span class="sl">Mes produits</span>
+      <h2>Des analyses <em>qui vont au fond</em></h2>
+      <p>Chaque produit est généré à partir de ton thème natal complet — jamais de généralités basées sur ton seul signe solaire.</p>
+    </div>
+    <div class="products-grid">
+
+      <a href="https://astro-red-flags.guillaumeastro.com" class="product-card card-rf">
+        <div class="product-icon">🚩</div>
+        <span class="product-label">Rapport PDF · Amour</span>
+        <div class="product-name">Red Flags <em>Astrologiques</em></div>
+        <p class="product-desc">Tes 3 schémas amoureux inconscients révélés à partir de Lune, Vénus, Mars et ta Maison 7. 6 pages personnalisées, livrées en 5 min.</p>
+        <div class="product-footer">
+          <div class="product-price">12€ <span>· paiement unique</span></div>
+          <span class="product-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://transits.guillaumeastro.com" class="product-card card-tr">
+        <div class="product-icon">🌀</div>
+        <span class="product-label">Newsletter · Hebdo</span>
+        <div class="product-name">Transits <em>Personnalisés</em></div>
+        <p class="product-desc">Chaque semaine, les transits planétaires analysés par rapport à ton thème natal. Ce qui t'affecte vraiment — pas les tendances générales.</p>
+        <div class="product-footer">
+          <div class="product-price">9€ <span>/ mois</span></div>
+          <span class="product-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://astromatch.guillaumeastro.com" class="product-card card-am featured">
+        <div class="product-icon">✦</div>
+        <span class="product-label">Rapport PDF · Compatibilité</span>
+        <div class="product-name">Astro<em>Match</em></div>
+        <p class="product-desc">Analyse de compatibilité entre deux thèmes natals. Synastrie, points de tension, zones de résonance — une lecture honnête de la dynamique.</p>
+        <div class="product-footer">
+          <div class="product-price">29€ <span>· paiement unique</span></div>
+          <span class="product-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="sl">Qui je suis</span>
+        <h2>L'astrologie comme <em>outil de connaissance</em></h2>
+        <p>Je m'appelle Guillaume. J'utilise l'astrologie non pas pour prédire l'avenir, mais pour <strong>comprendre les patterns</strong> — ces schémas répétitifs dans nos relations, nos réactions, nos blocages.</p>
+        <p>Chaque rapport que je génère s'appuie sur des <strong>calculs éphémérides réels</strong>, pas sur des généralités de signe solaire. C'est l'écart entre l'horoscope du magazine et une analyse sérieuse de ton thème natal.</p>
+        <p>Sur TikTok <strong>@guillaumeastro</strong>, je décrypte les positions planétaires pour rendre l'astrologie accessible — sans mysticisme, avec de la profondeur.</p>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat"><div class="about-stat-n">35k</div><div class="about-stat-l">Abonnés TikTok</div></div>
+        <div class="about-stat"><div class="about-stat-n">800+</div><div class="about-stat-l">Rapports générés</div></div>
+        <div class="about-stat"><div class="about-stat-n">10+</div><div class="about-stat-l">Points planétaires analysés</div></div>
+        <div class="about-stat"><div class="about-stat-n">3</div><div class="about-stat-l">Produits disponibles</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog-preview">
+  <div class="wrap">
+    <div class="blog-header">
+      <div>
+        <span class="sl">Blog</span>
+        <h2>Derniers <em>articles</em></h2>
+      </div>
+      <a href="https://guillaumeastro.com/blog/" class="blog-link">Tous les articles →</a>
+    </div>
+    <div class="blog-grid">
+      <a href="https://guillaumeastro.com/blog/venus-scorpion-relation-amoureuse.html" class="blog-card">
+        <span class="blog-tag">Amour &amp; relations</span>
+        <div class="blog-title">Vénus en Scorpion : <em>pourquoi tu aimes</em> si intensément</div>
+        <div class="blog-date">Mars 2025 · 8 min</div>
+      </a>
+      <a href="https://guillaumeastro.com/blog/" class="blog-card">
+        <span class="blog-tag">Planètes</span>
+        <div class="blog-title">La <em>Lune natale</em> : tes besoins émotionnels en relation</div>
+        <div class="blog-date">Fév. 2025 · 6 min</div>
+      </a>
+      <a href="https://guillaumeastro.com/blog/" class="blog-card">
+        <span class="blog-tag">Maisons</span>
+        <div class="blog-title">Maison 7 : le miroir de <em>l'autre</em> dans ton thème</div>
+        <div class="blog-date">Fév. 2025 · 7 min</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="tiktok">
+  <div class="wrap">
+    <div class="tiktok-inner">
+      <h2>35 000 personnes <em>déjà là</em></h2>
+      <p>Des analyses courtes, des décryptages planétaires, et des réponses aux questions que tu te poses sur ton thème natal — chaque semaine sur TikTok.</p>
+      <a href="https://tiktok.com/@guillaumeastro" class="btn-tiktok">
+        ♪ Suivre @guillaumeastro
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flogo">Guillaume<em>Astro</em></div>
+    <p>© 2025 · Analyses astrologiques personnalisées</p>
+    <p>
+      <a href="https://guillaumeastro.com/blog/">Blog</a> ·
+      <a href="https://astro-red-flags.guillaumeastro.com">Red Flags</a> ·
+      <a href="https://transits.guillaumeastro.com">Transits</a> ·
+      <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
+    </p>
+    <p style="margin-top:.5rem"><a href="mailto:contact@guillaumeastro.com">contact@guillaumeastro.com</a> · <a href="#">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var el=document.getElementById('sf');
+  for(var i=0;i<120;i++){
+    var s=document.createElement('div');s.className='st';
+    var sz=Math.random()*2+.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--d:'+(3+Math.random()*5)+'s;--o:'+(0.15+Math.random()*0.4)+';animation-delay:'+(Math.random()*6)+'s';
+    el.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
