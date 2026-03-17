@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletter Astro — Guillaume Astro</title>
+  <meta name="description" content="Reçois chaque semaine les mouvements astrologiques à suivre, des décryptages clairs et des repères concrets dans une newsletter astro gratuite et accessible." />
+  <link rel="canonical" href="https://guillaumeastro.com/newsletter" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b12;
+      --bg-soft:#12121c;
+      --card:#151524;
+      --border:rgba(255,255,255,0.08);
+      --text:#f3f1f8;
+      --muted:#a5a2b8;
+      --accent:#8b7cff;
+      --accent-soft:#b2a9ff;
+      --white:#ffffff;
+      --max:1120px;
+      --radius:18px;
+      --shadow:0 10px 40px rgba(0,0,0,.28);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top, rgba(139,124,255,.16), transparent 32%),
+        linear-gradient(180deg, #090910 0%, #0b0b12 100%);
+      color:var(--text);
+      font-family:'DM Sans', sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:20;
+      padding:1.1rem 2rem;
+      backdrop-filter: blur(14px);
+      background:rgba(10,10,15,.9);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.5rem;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.5rem;
+    }
+
+    .nav-link{
+      color:var(--muted);
+      font-size:.85rem;
+      transition:color .2s;
+    }
+
+    .nav-link:hover{
+      color:var(--text);
+    }
+
+    .brand{
+      font-family:'Playfair Display', serif;
+      font-size:1.05rem;
+      font-weight:600;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand em{
+      color:var(--accent-soft);
+      font-style:italic;
+    }
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      background:var(--accent);
+      color:var(--white);
+      padding:.5rem 1.1rem;
+      border-radius:6px;
+      font-size:.84rem;
+      font-weight:500;
+      transition:background .2s;
+      box-shadow:none;
+    }
+
+    .nav-cta:hover{
+      background:var(--accent-soft);
+    }
+
+    .hero{
+      padding:9rem 0 4.5rem;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border:1px solid rgba(139,124,255,.25);
+      background:rgba(139,124,255,.08);
+      border-radius:999px;
+      color:var(--accent-soft);
+      font-size:.82rem;
+      font-weight:600;
+      margin-bottom:22px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    h1,h2,h3{
+      margin:0 0 14px;
+      line-height:1.18;
+      letter-spacing:-.02em;
+    }
+
+    h1{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(2.5rem, 5vw, 4.5rem);
+      font-weight:600;
+    }
+
+    h2{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(1.75rem, 3vw, 2.6rem);
+      font-weight:600;
+    }
+
+    h3{
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .lead{
+      font-size:1.1rem;
+      color:var(--muted);
+      max-width:720px;
+      margin:0 0 28px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:50px;
+      padding:0 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary{
+      border-color:var(--border);
+      background:rgba(255,255,255,.02);
+      color:var(--text);
+    }
+
+    .micro{
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card .label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--accent-soft);
+      margin-bottom:12px;
+    }
+
+    .hero-card ul{
+      margin:18px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .hero-card li + li{margin-top:10px}
+
+    .section{
+      padding:72px 0;
+      border-top:1px solid rgba(255,255,255,.04);
+    }
+
+    .section-header{
+      max-width:760px;
+      margin-bottom:34px;
+    }
+
+    .section-header p{
+      color:var(--muted);
+      margin:0;
+      font-size:1.04rem;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+
+    .list{
+      display:grid;
+      gap:14px;
+      margin:24px 0 0;
+    }
+
+    .list-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:var(--muted);
+    }
+
+    .list-item strong{
+      color:var(--text);
+      display:block;
+      margin-bottom:2px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:var(--accent);
+      margin-top:9px;
+      flex:0 0 10px;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+      margin-top:24px;
+    }
+
+    .compare .card h3{
+      margin-bottom:10px;
+    }
+
+    .compare .card ul{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .compare-cta{
+      margin-top:18px;
+    }
+
+    .form-wrap{
+      background:
+        linear-gradient(135deg, rgba(139,124,255,.12), rgba(255,255,255,.03));
+      border:1px solid rgba(139,124,255,.18);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .form-wrap p{
+      color:var(--muted);
+      margin-top:0;
+    }
+
+    .form{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .input{
+      flex:1 1 280px;
+      min-height:54px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:0 16px;
+      font-size:1rem;
+    }
+
+    .input::placeholder{color:#8f8ba6}
+
+    .legal{
+      margin-top:14px;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    .final-cta{
+      text-align:center;
+      padding:96px 0 100px;
+    }
+
+    .final-cta p{
+      color:var(--muted);
+      font-size:1.05rem;
+      margin:0 0 24px;
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:28px 0 48px;
+      color:var(--muted);
+      font-size:.92rem;
+      text-align:center;
+    }
+
+    @media (max-width: 920px){
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .compare{
+        grid-template-columns:1fr;
+      }
+
+      .nav-inner{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .nav-links{
+        margin:0;
+        justify-content:center;
+        flex-wrap:wrap;
+      }
+
+      .hero{
+        padding-top:8.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="https://guillaumeastro.com" class="brand">Guillaume<em>Astro</em></a>
+      <div class="nav-links">
+        <a href="https://guillaumeastro.com" class="nav-link">Accueil</a>
+        <a href="https://guillaumeastro.com/blog/" class="nav-link">Blog</a>
+        <a href="https://guillaumeastro.com/newsletter" class="nav-link">Newsletter gratuite</a>
+        <a href="https://transits.guillaumeastro.com" class="nav-link">Version personnalisée</a>
+      </div>
+      <a href="#signup" class="nav-cta">Je rejoins la newsletter</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Newsletter Astro</div>
+          <h1>L’astrologie qui t’aide à lire le bon moment, pas juste à consommer du contenu.</h1>
+          <p class="lead">
+            Chaque semaine, reçois les mouvements astrologiques qui comptent vraiment, des décryptages clairs et des pistes concrètes pour mieux comprendre ce qui s’ouvre, ce qui se tend, et ce qui demande d’être regardé autrement.
+          </p>
+          <div class="hero-actions">
+            <a href="#signup" class="btn btn-primary">Je rejoins la newsletter</a>
+            <a href="#contenu" class="btn btn-secondary">Découvrir ce que je vais recevoir</a>
+          </div>
+          <div class="micro">Gratuit. Lisible en quelques minutes. Désinscription à tout moment. Pour une lecture appliquée à ton thème natal, la version personnalisée va plus loin.</div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="label">Ce que tu reçois</div>
+          <h3>Une lecture plus claire du climat astro de la semaine</h3>
+          <ul>
+            <li>Les transits qui comptent vraiment</li>
+            <li>Des décryptages simples et concrets</li>
+            <li>Des angles utiles pour mieux lire ce qui bouge</li>
+            <li>Une astrologie plus vivante, moins noyée dans le bruit</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Aujourd’hui, il y a trop d’astrologie… et pas assez de lecture utile.</h2>
+          <p>
+            Entre les horoscopes génériques, les posts flous et les interprétations contradictoires, il devient difficile de savoir ce qui mérite vraiment ton attention. Tu n’as pas besoin de plus de contenu. Tu as besoin de meilleurs repères.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            La newsletter astro a été pensée pour ça : te donner une lecture simple, claire et incarnée des mouvements qui comptent, sans jargon inutile, sans surcharge, sans théâtre mystique.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contenu">
+      <div class="container">
+        <div class="section-header">
+          <h2>Ce que tu reçois, chaque semaine</h2>
+          <p>Une astrologie plus lisible, plus concrète, plus utile dans ta vie réelle.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Les transits à suivre</h3>
+            <p>Les mouvements planétaires et climats astrologiques qui ont réellement du poids dans la période.</p>
+          </div>
+          <div class="card">
+            <h3>Une lecture claire</h3>
+            <p>Ce que cela peut activer dans la vraie vie : relations, énergie, timing, décisions, repositionnement.</p>
+          </div>
+          <div class="card">
+            <h3>Des angles concrets</h3>
+            <p>Pas seulement “voici ce qui se passe dans le ciel”, mais “voici ce que ça peut ouvrir, tendre ou révéler”.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Recevoir le bon éclairage au bon moment change tout.</h2>
+          <p>
+            Certaines périodes paraissent confuses jusqu’au moment où quelque chose les éclaire. Un transit important, une rétrogradation, une tension, une ouverture : parfois, le simple fait de mettre du sens sur ce qui bouge change complètement la manière de le vivre.
+          </p>
+        </div>
+        <div class="list">
+          <div class="list-item">
+            <span class="dot"></span>
+            <div><strong>Anticiper un climat</strong> plutôt que le subir sans comprendre.</div>
+          </div>
+          <div class="list-item">
+            <span class="dot"></span>
+            <div><strong>Reconnaître une opportunité</strong> quand elle s’ouvre vraiment.</div>
+          </div>
+          <div class="list-item">
+            <span class="dot"></span>
+            <div><strong>Comprendre une tension</strong> avant qu’elle ne t’épuise inutilement.</div>
+          </div>
+          <div class="list-item">
+            <span class="dot"></span>
+            <div><strong>Avancer avec plus de discernement</strong>, sans perdre ta lecture personnelle.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Cette newsletter est faite pour toi si…</h2>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <p>Tu t’intéresses à l’astrologie mais tu veux quelque chose de plus clair et plus structuré.</p>
+          </div>
+          <div class="card">
+            <p>Tu veux comprendre les grands mouvements sans te noyer dans les détails techniques.</p>
+          </div>
+          <div class="card">
+            <p>Tu cherches une astro plus utile, plus concrète, plus élégante.</p>
+          </div>
+          <div class="card">
+            <p>Tu veux une vraie porte d’entrée dans l’univers Guillaume Astro, sans devoir commencer par une offre personnalisée.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Une porte d’entrée. Pas une version au rabais.</h2>
+          <p>
+            La newsletter astro gratuite est pensée comme une lecture générale, régulière et accessible. Si tu veux ensuite une lecture appliquée à ton propre thème natal, la newsletter personnalisée va plus loin.
+          </p>
+        </div>
+
+        <div class="compare">
+          <div class="card">
+            <h3>Newsletter Astro</h3>
+            <p>Pour suivre les grands mouvements, comprendre l’ambiance du moment et recevoir des repères utiles chaque semaine.</p>
+            <ul>
+              <li>gratuite</li>
+              <li>plus générale</li>
+              <li>plus accessible</li>
+              <li>idéale pour découvrir l’univers</li>
+              <li>parfaite comme point d’entrée</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Newsletter Personnalisée</h3>
+            <p>Pour recevoir une lecture appliquée à ton propre thème natal, avec des transits interprétés pour toi.</p>
+            <ul>
+              <li>offre premium</li>
+              <li>plus précise</li>
+              <li>plus personnelle</li>
+              <li>idéale pour une guidance ciblée</li>
+            </ul>
+            <div class="compare-cta">
+              <a href="https://transits.guillaumeastro.com" class="btn btn-secondary">Découvrir la version personnalisée</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="signup">
+      <div class="container">
+        <div class="form-wrap">
+          <div class="section-header" style="margin-bottom:20px;">
+            <h2>Rejoins la newsletter astro</h2>
+            <p>
+              Reçois l’essentiel des mouvements astrologiques à suivre, des décryptages clairs et une astrologie plus utile dans ta boîte mail.
+            </p>
+          </div>
+
+          <form class="form" action="#" method="post">
+            <input class="input" type="email" name="email" placeholder="Ton email" required />
+            <button class="btn btn-primary" type="submit">Je rejoins la newsletter</button>
+          </form>
+
+          <div class="legal">
+            En t’inscrivant, tu recevras la newsletter astro et quelques emails liés à l’univers Guillaume Astro. Désinscription à tout moment.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <h2>Entre dans une astrologie plus claire, plus sobre, plus juste.</h2>
+        <p>Pas plus de bruit. Plus de sens.</p>
+        <a href="#signup" class="btn btn-primary">Je m’inscris maintenant</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © Guillaume Astro — Une astrologie plus lisible, plus utile, plus incarnée.
+      <div style="margin-top:10px;">
+        <a href="https://guillaumeastro.com">Accueil</a> ·
+        <a href="https://guillaumeastro.com/blog/">Blog</a> ·
+        <a href="https://transits.guillaumeastro.com">Newsletter personnalisée</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

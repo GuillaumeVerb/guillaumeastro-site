@@ -134,6 +134,7 @@ footer a:hover{color:var(--accent2)}
   <a href="/" class="logo">Guillaume<em>Astro</em></a>
   <div class="nav-links">
     <a href="https://guillaumeastro.com/blog/">Blog</a>
+    <a href="https://guillaumeastro.com/newsletter">Newsletter gratuite</a>
     <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
     <a href="https://astro-red-flags.guillaumeastro.com" class="ncta">Red Flags — 12€</a>
   </div>
@@ -176,9 +177,20 @@ footer a:hover{color:var(--accent2)}
         </div>
       </a>
 
+      <a href="https://guillaumeastro.com/newsletter" class="product-card card-tr">
+        <div class="product-icon">✉️</div>
+        <span class="product-label">Newsletter · Gratuite</span>
+        <div class="product-name">Newsletter Astro <em>Gratuite</em></div>
+        <p class="product-desc">Chaque semaine, les mouvements astrologiques les plus utiles, expliqués clairement. Une porte d'entrée simple pour suivre le climat du moment.</p>
+        <div class="product-footer">
+          <div class="product-price">Gratuit <span>· chaque semaine</span></div>
+          <span class="product-arrow">→</span>
+        </div>
+      </a>
+
       <a href="https://transits.guillaumeastro.com" class="product-card card-tr">
         <div class="product-icon">🌀</div>
-        <span class="product-label">Newsletter · Hebdo</span>
+        <span class="product-label">Newsletter · Premium</span>
         <div class="product-name">Transits <em>Personnalisés</em></div>
         <p class="product-desc">Chaque semaine, les transits planétaires analysés par rapport à ton thème natal. Ce qui t'affecte vraiment — pas les tendances générales.</p>
         <div class="product-footer">
@@ -216,7 +228,7 @@ footer a:hover{color:var(--accent2)}
         <div class="about-stat"><div class="about-stat-n">35k</div><div class="about-stat-l">Abonnés TikTok</div></div>
         <div class="about-stat"><div class="about-stat-n">800+</div><div class="about-stat-l">Rapports générés</div></div>
         <div class="about-stat"><div class="about-stat-n">10+</div><div class="about-stat-l">Points planétaires analysés</div></div>
-        <div class="about-stat"><div class="about-stat-n">3</div><div class="about-stat-l">Produits disponibles</div></div>
+        <div class="about-stat"><div class="about-stat-n" id="product-count">0</div><div class="about-stat-l">Produits disponibles</div></div>
       </div>
     </div>
   </div>
@@ -237,15 +249,15 @@ footer a:hover{color:var(--accent2)}
         <div class="blog-title">Vénus en Scorpion : <em>pourquoi tu aimes</em> si intensément</div>
         <div class="blog-date">Mars 2025 · 8 min</div>
       </a>
-      <a href="https://guillaumeastro.com/blog/" class="blog-card">
-        <span class="blog-tag">Planètes</span>
-        <div class="blog-title">La <em>Lune natale</em> : tes besoins émotionnels en relation</div>
-        <div class="blog-date">Fév. 2025 · 6 min</div>
-      </a>
-      <a href="https://guillaumeastro.com/blog/" class="blog-card">
+      <a href="https://guillaumeastro.com/blog/maison-8-guide-complet" class="blog-card">
         <span class="blog-tag">Maisons</span>
-        <div class="blog-title">Maison 7 : le miroir de <em>l'autre</em> dans ton thème</div>
-        <div class="blog-date">Fév. 2025 · 7 min</div>
+        <div class="blog-title">La Maison 8 : <em>guide complet</em> sur la transformation</div>
+        <div class="blog-date">Mars 2025 · 12 min</div>
+      </a>
+      <a href="https://guillaumeastro.com/blog/7-signes-pluton-fort-theme-natal" class="blog-card">
+        <span class="blog-tag">Planètes</span>
+        <div class="blog-title">7 signes que tu as <em>Pluton fort</em> dans ton thème natal</div>
+        <div class="blog-date">Mars 2025 · 7 min</div>
       </a>
     </div>
   </div>
@@ -269,6 +281,7 @@ footer a:hover{color:var(--accent2)}
     <p>© 2025 · Analyses astrologiques personnalisées</p>
     <p>
       <a href="https://guillaumeastro.com/blog/">Blog</a> ·
+      <a href="https://guillaumeastro.com/newsletter">Newsletter gratuite</a> ·
       <a href="https://astro-red-flags.guillaumeastro.com">Red Flags</a> ·
       <a href="https://transits.guillaumeastro.com">Transits</a> ·
       <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
@@ -286,6 +299,12 @@ footer a:hover{color:var(--accent2)}
     s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--d:'+(3+Math.random()*5)+'s;--o:'+(0.15+Math.random()*0.4)+';animation-delay:'+(Math.random()*6)+'s';
     el.appendChild(s);
   }
+})();
+
+(function(){
+  var countEl=document.getElementById('product-count');
+  var cards=document.querySelectorAll('#produits .product-card');
+  if(countEl){countEl.textContent=String(cards.length);}
 })();
 </script>
 </body>
