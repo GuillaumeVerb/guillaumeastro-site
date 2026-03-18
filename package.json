@@ -1,0 +1,10 @@
+{
+  "name": "guillaumeastro-site",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "devDependencies": {
+    "vercel": "^50.33.0"
+  }
+}

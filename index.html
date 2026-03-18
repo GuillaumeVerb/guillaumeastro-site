@@ -56,34 +56,36 @@ h2 em{font-style:italic;color:var(--accent2)}
 .products-intro{text-align:center;margin-bottom:3rem}
 .products-intro p{color:var(--muted);font-size:.96rem;max-width:500px;margin:.6rem auto 0}
 .products-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
-@media(min-width:640px){.products-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:700px){.products-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.products-grid{grid-template-columns:repeat(3,1fr)}}
 
-.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2rem;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
-.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:.7}
-.product-card:hover{border-color:rgba(255,255,255,.12);transform:translateY(-4px)}
-.product-card.featured{border-color:rgba(124,106,247,.2);background:linear-gradient(135deg,rgba(124,106,247,.07),var(--bg-card))}
-.product-icon{font-size:1.8rem;margin-bottom:1rem}
-.product-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
-.product-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.6rem;line-height:1.3}
-.product-name em{font-style:italic}
-.product-desc{font-size:.84rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1.4rem}
-.product-footer{display:flex;align-items:center;justify-content:space-between}
-.product-price{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--text)}
-.product-price span{font-size:.75rem;font-family:'DM Sans',sans-serif;color:var(--muted);font-weight:300}
-.product-arrow{font-size:.8rem;color:var(--accent2)}
+.product-card{--accent:var(--accent);background:linear-gradient(180deg,rgba(255,255,255,.015),rgba(255,255,255,0)),var(--bg-card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;position:relative;overflow:hidden;min-height:100%}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);opacity:.85}
+.product-card::after{content:'';position:absolute;inset:auto -70px -70px auto;width:180px;height:180px;background:radial-gradient(circle,var(--accent) 0%,rgba(0,0,0,0) 68%);opacity:.12;pointer-events:none}
+.product-card.is-paid{box-shadow:0 20px 45px rgba(0,0,0,.18)}
+.product-card.is-free{grid-column:1/-1;background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.01)),var(--bg-card)}
+.product-card.is-loading{pointer-events:none}
+.product-level-badge{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;padding:.42rem .8rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.product-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
+.product-head h3{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:600;line-height:1.2}
+.product-meta{font-size:.84rem;color:var(--muted);line-height:1.7;min-height:2.8rem}
+.product-price{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;line-height:1.1;color:var(--text)}
+.product-price.is-free{font-size:1.35rem;color:#d9f5e4}
+.product-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:auto}
+.product-actions .btn-primary,.product-actions .btn-secondary{padding:.82rem 1.2rem;font-size:.88rem}
+.product-actions .btn-primary{background:var(--accent);box-shadow:0 0 28px color-mix(in srgb, var(--accent) 28%, transparent)}
+.product-card.is-free .btn-primary{background:transparent;border:1px solid rgba(255,255,255,.12);box-shadow:none}
+.products-feedback{margin-top:1rem;text-align:center;min-height:1.2rem;font-size:.84rem;color:var(--muted)}
+.products-feedback.is-error{color:#f2b8b5}
 
-/* RED FLAGS card */
-.card-rf{--card-accent:#c0392b}
-.card-rf .product-name em{color:#e74c3c}
-.card-rf .product-arrow,.card-rf .product-label{color:#e74c3c}
-
-/* TRANSITS card */
-.card-tr{--card-accent:#2e9e7a}
-.card-tr .product-name em{color:#3dbf94}
-.card-tr .product-arrow,.card-tr .product-label{color:#3dbf94}
-
-/* ASTROMATCH card */
-.card-am{--card-accent:#7c6af7}
+.skeleton{position:relative;overflow:hidden;background:rgba(255,255,255,.045)}
+.skeleton::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);animation:sh 1.5s infinite}
+.skeleton-pill{width:110px;height:30px;border-radius:999px}
+.skeleton-title{height:28px;width:65%;border-radius:10px}
+.skeleton-price{height:40px;width:110px;border-radius:12px}
+.skeleton-copy{height:54px;width:100%;border-radius:12px}
+.skeleton-btn{height:44px;width:150px;border-radius:10px}
+@keyframes sh{100%{transform:translateX(100%)}}
 
 /* ABOUT */
 #about{padding:5rem 0;border-top:1px solid var(--border)}
@@ -125,6 +127,14 @@ footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
 footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--accent2)}
+@media(max-width:720px){
+nav{padding:.85rem 1rem;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.nav-links{gap:.8rem 1rem;justify-content:center;flex-wrap:wrap}
+.nav-links a{font-size:.8rem}
+.ncta{padding:.45rem .95rem;font-size:.8rem}
+#hero{padding:10.75rem 0 4.5rem}
+.badge{margin-bottom:1.4rem}
+}
 </style>
 </head>
 <body>
@@ -160,57 +170,46 @@ footer a:hover{color:var(--accent2)}
 <section id="produits">
   <div class="wrap">
     <div class="products-intro">
-      <span class="sl">Mes produits</span>
+      <span class="sl">Mes rapports</span>
       <h2>Des analyses <em>qui vont au fond</em></h2>
       <p>Chaque produit est généré à partir de ton thème natal complet — jamais de généralités basées sur ton seul signe solaire.</p>
     </div>
-    <div class="products-grid">
-
-      <a href="https://astro-red-flags.guillaumeastro.com" class="product-card card-rf">
-        <div class="product-icon">🚩</div>
-        <span class="product-label">Rapport PDF · Amour</span>
-        <div class="product-name">Red Flags <em>Astrologiques</em></div>
-        <p class="product-desc">Tes 3 schémas amoureux inconscients révélés à partir de Lune, Vénus, Mars et ta Maison 7. 6 pages personnalisées, livrées en 5 min.</p>
-        <div class="product-footer">
-          <div class="product-price">12€ <span>· paiement unique</span></div>
-          <span class="product-arrow">→</span>
+    <div class="products-grid" id="products-grid" aria-live="polite">
+      <div class="product-card is-loading">
+        <div class="product-level-badge skeleton skeleton-pill"></div>
+        <div class="product-head">
+          <div class="skeleton skeleton-title"></div>
         </div>
-      </a>
-
-      <a href="https://guillaumeastro.com/newsletter" class="product-card card-tr">
-        <div class="product-icon">✉️</div>
-        <span class="product-label">Newsletter · Gratuite</span>
-        <div class="product-name">Newsletter Astro <em>Gratuite</em></div>
-        <p class="product-desc">Chaque semaine, les mouvements astrologiques les plus utiles, expliqués clairement. Une porte d'entrée simple pour suivre le climat du moment.</p>
-        <div class="product-footer">
-          <div class="product-price">Gratuit <span>· chaque semaine</span></div>
-          <span class="product-arrow">→</span>
+        <div class="product-price skeleton skeleton-price"></div>
+        <div class="product-meta skeleton skeleton-copy"></div>
+        <div class="product-actions">
+          <div class="skeleton skeleton-btn"></div>
         </div>
-      </a>
-
-      <a href="https://transits.guillaumeastro.com" class="product-card card-tr">
-        <div class="product-icon">🌀</div>
-        <span class="product-label">Newsletter · Premium</span>
-        <div class="product-name">Transits <em>Personnalisés</em></div>
-        <p class="product-desc">Chaque semaine, les transits planétaires analysés par rapport à ton thème natal. Ce qui t'affecte vraiment — pas les tendances générales.</p>
-        <div class="product-footer">
-          <div class="product-price">9€ <span>/ mois</span></div>
-          <span class="product-arrow">→</span>
+      </div>
+      <div class="product-card is-loading">
+        <div class="product-level-badge skeleton skeleton-pill"></div>
+        <div class="product-head">
+          <div class="skeleton skeleton-title"></div>
         </div>
-      </a>
-
-      <a href="https://astromatch.guillaumeastro.com" class="product-card card-am featured">
-        <div class="product-icon">✦</div>
-        <span class="product-label">Rapport PDF · Compatibilité</span>
-        <div class="product-name">Astro<em>Match</em></div>
-        <p class="product-desc">Analyse de compatibilité entre deux thèmes natals. Synastrie, points de tension, zones de résonance — une lecture honnête de la dynamique.</p>
-        <div class="product-footer">
-          <div class="product-price">29€ <span>· paiement unique</span></div>
-          <span class="product-arrow">→</span>
+        <div class="product-price skeleton skeleton-price"></div>
+        <div class="product-meta skeleton skeleton-copy"></div>
+        <div class="product-actions">
+          <div class="skeleton skeleton-btn"></div>
         </div>
-      </a>
-
+      </div>
+      <div class="product-card is-loading">
+        <div class="product-level-badge skeleton skeleton-pill"></div>
+        <div class="product-head">
+          <div class="skeleton skeleton-title"></div>
+        </div>
+        <div class="product-price skeleton skeleton-price"></div>
+        <div class="product-meta skeleton skeleton-copy"></div>
+        <div class="product-actions">
+          <div class="skeleton skeleton-btn"></div>
+        </div>
+      </div>
     </div>
+    <p class="products-feedback" id="products-feedback"></p>
   </div>
 </section>
 
@@ -303,8 +302,116 @@ footer a:hover{color:var(--accent2)}
 
 (function(){
   var countEl=document.getElementById('product-count');
-  var cards=document.querySelectorAll('#produits .product-card');
-  if(countEl){countEl.textContent=String(cards.length);}
+  var grid=document.getElementById('products-grid');
+  var feedbackEl=document.getElementById('products-feedback');
+  var levelLabels={micro:'Essentiel',standard:'Complet',premium:'Premium'};
+
+  function escapeHtml(value){
+    return String(value ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  function normalizeUrl(url){
+    if(!url){return null;}
+    return escapeHtml(url);
+  }
+
+  function getMeta(product){
+    if(Array.isArray(product.themes) && product.themes.length){
+      return product.themes.slice(0,3).map(escapeHtml).join(' · ');
+    }
+    if(product.is_free){
+      return 'Chaque semaine, une lecture claire du climat astrologique.';
+    }
+    return product.billing_type === 'recurring'
+      ? 'Lecture personnalisée mise à jour chaque mois.'
+      : 'Rapport PDF astrologique prêt en quelques minutes.';
+  }
+
+  function getPriceDisplay(product){
+    if(product.is_free){
+      return {label:'Gratuit',free:true};
+    }
+    return {
+      label:String(product.price || 0) + '€' + (product.billing_type === 'recurring' ? '/mois' : ''),
+      free:false
+    };
+  }
+
+  function getPrimaryUrl(product){
+    return product.is_free ? product.deployment_url : product.payment_link_url;
+  }
+
+  function getPrimaryLabel(product){
+    if(product.cta_label){return product.cta_label;}
+    return product.is_free ? 'S’inscrire gratuitement' : 'Acheter maintenant';
+  }
+
+  function renderCard(product){
+    var accent=escapeHtml(product.accent_color || '#7c6af7');
+    var badgeLabel=product.is_free ? 'Gratuit' : (levelLabels[product.product_level] || 'Essentiel');
+    var price=getPriceDisplay(product);
+    var ctaUrl=normalizeUrl(getPrimaryUrl(product));
+    var learnMore=normalizeUrl(!product.is_free ? product.deployment_url : null);
+    var isFreeClass=product.is_free ? 'is-free' : 'is-paid';
+    var primaryAttrs=ctaUrl ? 'href="' + ctaUrl + '"' : 'href="#" aria-disabled="true"';
+    var secondaryHtml=learnMore
+      ? '<a href="' + learnMore + '" class="btn-secondary">En savoir plus →</a>'
+      : '';
+
+    return [
+      '<div class="product-card ' + isFreeClass + '" style="--accent: ' + accent + '">',
+      '<span class="product-level-badge">' + escapeHtml(badgeLabel) + '</span>',
+      '<div class="product-head"><h3>' + escapeHtml(product.product_name || 'Produit astro') + '</h3></div>',
+      '<div class="product-price' + (price.free ? ' is-free' : '') + '">' + escapeHtml(price.label) + '</div>',
+      '<div class="product-meta">' + escapeHtml(getMeta(product)) + '</div>',
+      '<div class="product-actions">',
+      '<a ' + primaryAttrs + ' class="btn-primary">' + escapeHtml(getPrimaryLabel(product)) + '</a>',
+      secondaryHtml,
+      '</div>',
+      '</div>'
+    ].join('');
+  }
+
+  async function loadProducts(){
+    try{
+      var response=await fetch('/api/products');
+      if(!response.ok){
+        throw new Error('API error ' + response.status);
+      }
+      var products=await response.json();
+      var paid=products
+        .filter(function(product){return !product.is_free;})
+        .sort(function(a,b){return (a.price || 0) - (b.price || 0);});
+      var free=products.filter(function(product){return product.is_free;});
+      var ordered=paid.concat(free);
+
+      if(!ordered.length){
+        grid.innerHTML='';
+        if(countEl){countEl.textContent='0';}
+        return;
+      }
+
+      grid.innerHTML=ordered.map(renderCard).join('');
+      if(countEl){countEl.textContent=String(ordered.length);}
+      if(feedbackEl){feedbackEl.textContent='';feedbackEl.classList.remove('is-error');}
+    }catch(error){
+      console.error('Failed to render products', error);
+      if(countEl){countEl.textContent='0';}
+      if(grid){grid.innerHTML='';}
+      if(feedbackEl){
+        feedbackEl.textContent='Les rapports ne sont pas disponibles pour le moment.';
+        feedbackEl.classList.add('is-error');
+      }
+    }
+  }
+
+  if(countEl){countEl.textContent='...';}
+  if(grid){loadProducts();}
 })();
 </script>
 </body>
