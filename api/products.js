@@ -1,6 +1,93 @@
 const NOTION_URL =
   'https://api.notion.com/v1/databases/b73a724455c44c13804fddedce8f5e69/query';
 
+const FALLBACK_PRODUCTS = [
+  {
+    product_name: 'AstroMatch',
+    product_slug: 'astromatch',
+    product_level: 'standard',
+    price: 29,
+    billing_type: 'one_time',
+    payment_link_url: 'https://buy.stripe.com/14A28sf7WbdBgU46T6bwk08',
+    deployment_url: 'https://astromatch.guillaumeastro.com',
+    accent_color: '#9b59b6',
+    cta_label: 'AstroMatch - 29€',
+    themes: ['compatibilite', 'amour', 'relations'],
+    upsell_product_slug: 'mission-de-vie',
+    is_free: false,
+  },
+  {
+    product_name: 'Transits Personnalises',
+    product_slug: 'transits-personnalises',
+    product_level: 'micro',
+    price: 9,
+    billing_type: 'recurring',
+    payment_link_url: 'https://buy.stripe.com/eVq28sgc00yX9rC0uIbwk07',
+    deployment_url: 'https://transits.guillaumeastro.com',
+    accent_color: '#3498db',
+    cta_label: 'Transits - 9€/mois',
+    themes: ['transits', 'energie'],
+    upsell_product_slug: 'astromatch',
+    is_free: false,
+  },
+  {
+    product_name: 'Red Flags Astrologiques',
+    product_slug: 'red-flags-astrologiques',
+    product_level: 'micro',
+    price: 12,
+    billing_type: 'one_time',
+    payment_link_url: 'https://buy.stripe.com/eVqaEY9NCdlJgU4a5ibwk06',
+    deployment_url: 'https://astro-red-flags.guillaumeastro.com',
+    accent_color: '#e74c3c',
+    cta_label: 'Red Flags - 12€',
+    themes: ['amour', 'relations', 'psychologie'],
+    upsell_product_slug: 'mission-de-vie',
+    is_free: false,
+  },
+  {
+    product_name: 'Newsletter Astro - Gratuite',
+    product_slug: 'newsletter-gratuite',
+    product_level: 'micro',
+    price: 0,
+    billing_type: 'recurring',
+    payment_link_url: null,
+    deployment_url: 'https://transits.guillaumeastro.com',
+    accent_color: '#27ae60',
+    cta_label: 'Rejoindre - Gratuit',
+    themes: ['transits', 'energie'],
+    upsell_product_slug: 'red-flags-astrologiques',
+    is_free: true,
+  },
+  {
+    product_name: 'Style Amoureux Astro',
+    product_slug: 'style-amoureux',
+    product_level: 'micro',
+    price: 12,
+    billing_type: 'one_time',
+    payment_link_url: 'https://buy.stripe.com/6oUfZi9NC0yXdHS1yMbwk0a',
+    deployment_url: 'https://style-amoureux.guillaumeastro.com',
+    accent_color: '#e91e8c',
+    cta_label: 'Style Amoureux Astro - 12€',
+    themes: ['amour', 'relations'],
+    upsell_product_slug: 'astromatch',
+    is_free: false,
+  },
+  {
+    product_name: 'Mission de Vie',
+    product_slug: 'mission-de-vie',
+    product_level: 'standard',
+    price: 27,
+    billing_type: 'one_time',
+    payment_link_url: 'https://buy.stripe.com/5kQcN69NCbdB7jua5ibwk0n',
+    deployment_url: 'https://guillaumeastro.com/mission-de-vie',
+    accent_color: '#7c6af7',
+    cta_label: 'Mission de Vie - 27€',
+    themes: ['mission', 'vocation', 'psychologie'],
+    upsell_product_slug: 'astromatch',
+    is_free: false,
+  },
+];
+
 function normalizeKey(value) {
   return String(value ?? '')
     .toLowerCase()
@@ -171,7 +258,10 @@ async function queryNotion(body) {
 module.exports = async function handler(_req, res) {
   try {
     if (!process.env.NOTION_TOKEN) {
-      throw new Error('Missing NOTION_TOKEN');
+      console.warn('Missing NOTION_TOKEN, serving fallback products');
+      res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
+      res.setHeader('X-Products-Source', 'fallback');
+      return res.status(200).json(FALLBACK_PRODUCTS);
     }
 
     let data;
@@ -197,10 +287,20 @@ module.exports = async function handler(_req, res) {
       ? data.results.filter(isLiveProduct).map(mapProduct).filter(isRenderableProduct)
       : [];
 
+    if (!products.length) {
+      console.warn('No renderable products returned by Notion, serving fallback products');
+      res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
+      res.setHeader('X-Products-Source', 'fallback');
+      return res.status(200).json(FALLBACK_PRODUCTS);
+    }
+
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
+    res.setHeader('X-Products-Source', 'notion');
     return res.status(200).json(products);
   } catch (error) {
     console.error('Failed to fetch products', error);
-    return res.status(500).json({ error: 'Failed to fetch products' });
+    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
+    res.setHeader('X-Products-Source', 'fallback');
+    return res.status(200).json(FALLBACK_PRODUCTS);
   }
 };
