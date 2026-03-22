@@ -113,4 +113,307 @@ input.err{border-color:var(--err)!important}
 .fch{color:var(--muted);font-size:.75rem;transition:transform .25s;flex-shrink:0}
 .fi.open .fch{transform:rotate(180deg)}
 .fa{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.fai{padding:0 1.4rem 1.15rem;font-size:.86rem;color:var(
+.fai{padding:0 1.4rem 1.15rem;font-size:.86rem;color:var(--muted);line-height:1.78}
+footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:.7rem}
+.flogo em{font-style:italic;color:var(--accent2)}
+footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div id="sf"></div>
+<nav>
+  <a href="#" class="logo">Mission de <em>Vie</em></a>
+  <a href="#form" class="ncta">Découvrir ma mission →</a>
+</nav>
+<section id="hero">
+  <div class="wrap">
+    <div class="badge"><span class="bd"></span>+ de 800 personnes ont déjà découvert leur mission de vie</div>
+    <h1>Découvre la raison profonde<br><em>pour laquelle tu es ici</em><br>révélée par ton thème natal</h1>
+    <p class="sub">Ton thème natal contient la carte de ta mission — pas juste ton signe. Ce à quoi ton âme est appelée, enfin mis en mots.</p>
+    <a href="#form" class="cta">Découvrir ma mission de vie →</a>
+    <div class="checks">
+      <span>✓ Rapport personnalisé</span>
+      <span>✓ PDF livré en 5 min</span>
+      <span>✓ Satisfait ou remboursé 7 jours</span>
+    </div>
+  </div>
+</section>
+<section id="rapport">
+  <div class="wrap">
+    <span class="sl">Le rapport</span>
+    <h2>Un document <em>précis et personnel</em><br>sur ta mission de vie</h2>
+    <p style="color:var(--muted);font-size:.94rem;">Chaque rapport est généré à partir de ton thème natal complet. Rien de générique — chaque phrase est personnalisée à ta combinaison planétaire unique.</p>
+    <div class="card">
+      <ul class="rf">
+        <li>Introduction personnalisée — ton profil de mission résumé en quelques mots clés</li>
+        <li>Ta vocation profonde révélée — avec l'explication planétaire derrière chaque axe</li>
+        <li>Comment ta mission se manifeste concrètement dans ta vie et tes choix</li>
+        <li>Un levier actionnable pour t'aligner davantage avec ta raison d'être</li>
+        <li>Ton profil de vie synthèse — 3 mots qui définissent ta mission unique</li>
+      </ul>
+    </div>
+    <div class="pg">
+      <div class="pc"><div class="pct">☀ Soleil &amp; identité profonde</div><p>La force centrale de qui tu es, ce vers quoi tu te diriges et le cœur de ta mission incarnée.</p></div>
+      <div class="pc"><div class="pct">☊ Nœud Nord &amp; évolution</div><p>La direction karmique de ton âme — ce que tu es venu apprendre et développer dans cette vie.</p></div>
+      <div class="pc"><div class="pct">♄ Saturne &amp; vocation</div><p>Les leçons structurantes de ta vie, les domaines où tu bâtis quelque chose de durable et significatif.</p></div>
+      <div class="pc"><div class="pct">♃ Jupiter &amp; expansion</div><p>Tes dons naturels, les domaines où tu rayonnes et comment tu peux grandir vers ta pleine expression.</p></div>
+    </div>
+  </div>
+</section>
+<section id="benefices">
+  <div class="wrap" style="text-align:center">
+    <span class="sl">Ce que tu reçois</span>
+    <h2>Bien plus qu'un horoscope.<br><em>Une carte de ta mission.</em></h2>
+    <div class="sg">
+      <div class="sc"><div class="sn">6</div><div class="sl2">Pages personnalisées</div></div>
+      <div class="sc"><div class="sn">4</div><div class="sl2">Axes planétaires analysés</div></div>
+      <div class="sc"><div class="sn">10+</div><div class="sl2">Points planétaires</div></div>
+      <div class="sc"><div class="sn">∞</div><div class="sl2">Conseils concrets</div></div>
+    </div>
+  </div>
+</section>
+<section id="form">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="sl">Calcul de ton rapport</span>
+      <h2>Renseigne ta date de naissance</h2>
+      <p style="color:var(--muted);margin-top:.45rem;font-size:.92rem;">Aucun compte requis · Données non conservées</p>
+    </div>
+    <div class="fc">
+      <div class="fg">
+        <div class="fg-item full">
+          <label for="prenom">Prénom *</label>
+          <input type="text" id="prenom" placeholder="Ton prénom" autocomplete="given-name">
+          <span class="ferr" id="err-prenom">Ce champ est requis.</span>
+        </div>
+        <div class="fg-item">
+          <label for="dob">Date de naissance *</label>
+          <input type="date" id="dob">
+          <span class="ferr" id="err-dob">Ce champ est requis.</span>
+        </div>
+        <div class="fg-item">
+          <label for="heure">Heure de naissance</label>
+          <input type="time" id="heure">
+          <span class="hint">Laisse vide si inconnue</span>
+        </div>
+        <div class="fg-item full cg" id="vg">
+          <label for="ville">Ville de naissance</label>
+          <input type="text" id="ville" placeholder="Paris, Lyon, Montréal…" autocomplete="off">
+          <span class="hint">La ville suffit — pas besoin d'adresse exacte</span>
+          <div id="cs"></div>
+        </div>
+        <div class="fg-item full">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="ton@email.com" autocomplete="email">
+          <span class="ferr" id="err-email">Ce champ est requis.</span>
+        </div>
+      </div>
+      <button class="btn" id="sbtn">Analyser mon thème natal →</button>
+      <div class="fchk">
+        <span>✓ Résultat immédiat</span>
+        <span>✓ Aucun compte requis</span>
+        <span>✓ Données non conservées</span>
+      </div>
+      <div class="spin-wrap" id="spw">
+        <div class="spin"></div>
+        <p class="spin-txt">Calcul de ton thème natal en cours…</p>
+      </div>
+      <div id="result">
+        <div class="rp">
+          <h3>Ta mission de vie, <span id="pnom"></span></h3>
+          <p>Voici ce que ton thème natal révèle. Les axes fondamentaux de ta mission sont verrouillés dans le rapport complet.</p>
+          <div class="li-wrap">
+            <div class="li">🔒 Axe #1 — Soleil &amp; ton identité profonde</div>
+            <div class="li">🔒 Axe #2 — Nœud Nord &amp; ta direction karmique</div>
+            <div class="li">🔒 Axe #3 — Saturne &amp; ta vocation structurante</div>
+            <div class="li">🔒 Axe #4 — Jupiter &amp; tes dons d'expansion</div>
+          </div>
+        </div>
+        <div class="pw">
+          <h3>Débloquer mon rapport complet</h3>
+          <p>Accède à l'analyse complète de ta mission de vie avec explications planétaires, manifestations concrètes et leviers d'action.</p>
+          <ul class="pwf">
+            <li>Tes 4 axes planétaires détaillés avec explication astrologique</li>
+            <li>Comment ta mission se manifeste dans tes choix et ta vie réelle</li>
+            <li>Un levier concret pour t'aligner avec chaque axe de ta mission</li>
+            <li>Ton profil de vie synthèse + 3 mots clés</li>
+            <li>Rapport PDF de 6 pages téléchargeable immédiatement</li>
+          </ul>
+          <div class="price">27€</div>
+          <div class="plbl">Prix de lancement · paiement unique · rapport livré par email en 5 min</div>
+          <button class="btnpay" id="payBtn">Mission de Vie — 27€ →</button>
+          <p class="guar">✓ Satisfait ou remboursé sous 7 jours, sans condition</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testi">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="sl">Retours</span>
+      <h2><em>Ce que les étoiles</em> ont révélé</h2>
+    </div>
+    <div class="tg">
+      <div class="te"><div class="ts">★★★★★</div><p>« J'avais l'impression de chercher ma voie depuis des années. Ce rapport a mis des mots précis sur quelque chose que je ressentais sans pouvoir l'expliquer. »</p><div class="ta">Léa M., 29 ans</div></div>
+      <div class="te"><div class="ts">★★★★★</div><p>« La partie sur mon Nœud Nord m'a ouvert les yeux. Je comprends enfin pourquoi certains chemins me semblent si naturels et d'autres si épuisants. »</p><div class="ta">Thomas R., 34 ans</div></div>
+      <div class="te"><div class="ts">★★★★★</div><p>« L'analyse de Saturne était d'une justesse déconcertante. J'ai relu deux fois et partagé le rapport avec ma meilleure amie. »</p><div class="ta">Camille D., 26 ans</div></div>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="sl">Questions fréquentes</span>
+      <h2>Ce que tu veux <em>savoir</em></h2>
+    </div>
+    <div class="fl">
+      <div class="fi"><button class="fq" data-faq="0">L'heure de naissance est-elle obligatoire ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Non — si tu ne la connais pas, laisse le champ vide. L'heure permet de calculer l'Ascendant et les maisons, mais tous les axes planétaires liés à ta mission restent pertinents sans elle.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="1">Comment je reçois mon rapport ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Le rapport PDF est généré après paiement et envoyé par email en moins de 5 minutes. Tu peux aussi le télécharger depuis la page de confirmation.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="2">Est-ce que ça me dit ce que je dois faire de ma vie ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Pas de manière prescriptive — le rapport t'éclaire sur tes tendances profondes, tes dons naturels et ta direction karmique. C'est une boussole, pas une injonction. Tu restes libre de tes choix.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="3">Quelle différence avec un horoscope classique ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Un horoscope se base sur ton seul signe solaire. Ce rapport prend en compte le Soleil, le Nœud Nord, Saturne et Jupiter, en interaction dans ton thème natal complet — une lecture bien plus nuancée et personnelle.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="4">Et si je ne suis pas satisfait ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Satisfait ou remboursé sous 7 jours, sans condition. Envoie un email à contact@guillaumeastro.com — remboursement sous 48h.</div></div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="flogo">Mission de <em>Vie</em></div>
+    <p>© 2025 · Rapport personnalisé · Tous droits réservés</p>
+    <p><a href="mailto:contact@guillaumeastro.com">contact@guillaumeastro.com</a> · <a href="#">Mentions légales</a> · <a href="#">CGV</a></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var el=document.getElementById('sf');
+  for(var i=0;i<120;i++){
+    var s=document.createElement('div');s.className='st';
+    var sz=Math.random()*2+.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--d:'+(3+Math.random()*5)+'s;--o:'+(0.2+Math.random()*0.55)+';animation-delay:'+(Math.random()*6)+'s';
+    el.appendChild(s);
+  }
+})();
+
+var acT;
+var vi=document.getElementById('ville');
+var cs=document.getElementById('cs');
+var selectedLat=null;
+var selectedLon=null;
+var selectedVille=null;
+vi.addEventListener('input',function(){
+  clearTimeout(acT);
+  selectedLat=null;selectedLon=null;selectedVille=null;
+  var q=this.value.trim();
+  if(q.length<2){cs.style.display='none';return;}
+  acT=setTimeout(function(){
+    fetch('https://nominatim.openstreetmap.org/search?q='+encodeURIComponent(q)+'&format=json&limit=6&featuretype=city&accept-language=fr')
+      .then(function(r){return r.json();})
+      .then(function(data){
+        cs.innerHTML='';
+        if(!data.length){cs.style.display='none';return;}
+        data.forEach(function(place){
+          var label=place.display_name.split(',').slice(0,3).map(function(p){return p.trim();}).join(', ');
+          var item=document.createElement('div');item.className='si';item.textContent=label;
+          item.addEventListener('mousedown',function(e){
+            e.preventDefault();
+            vi.value=label;
+            selectedLat=parseFloat(place.lat);
+            selectedLon=parseFloat(place.lon);
+            selectedVille=label;
+            cs.style.display='none';
+          });
+          cs.appendChild(item);
+        });
+        cs.style.display='block';
+      }).catch(function(){});
+  },320);
+});
+document.addEventListener('click',function(e){if(!e.target.closest('#vg'))cs.style.display='none';});
+
+function setErr(id,show){
+  var el=document.getElementById(id);
+  var er=document.getElementById('err-'+id);
+  if(show){el.classList.add('err');er.classList.add('show');}
+  else{el.classList.remove('err');er.classList.remove('show');}
+}
+document.getElementById('prenom').addEventListener('input',function(){setErr('prenom',false);});
+document.getElementById('dob').addEventListener('input',function(){setErr('dob',false);});
+
+function doSubmit(){
+  var prenom=document.getElementById('prenom').value.trim();
+  var dob=document.getElementById('dob').value;
+  setErr('prenom',!prenom);
+  setErr('dob',!dob);
+  if(!prenom||!dob)return;
+  var btn=document.getElementById('sbtn');
+  btn.disabled=true;btn.textContent='Calcul en cours…';
+  document.getElementById('spw').classList.add('on');
+  setTimeout(function(){
+    document.getElementById('spw').classList.remove('on');
+    document.getElementById('pnom').textContent=prenom;
+    var res=document.getElementById('result');
+    res.classList.add('on');
+    res.scrollIntoView({behavior:'smooth',block:'start'});
+    btn.disabled=false;btn.textContent='Analyser mon thème natal →';
+  },2600);
+}
+document.getElementById('sbtn').addEventListener('click',doSubmit);
+document.querySelectorAll('#form input').forEach(function(inp){
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')doSubmit();});
+});
+
+document.querySelectorAll('.fq').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item=btn.closest('.fi');
+    var ans=item.querySelector('.fa');
+    var open=item.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(function(i){
+      i.classList.remove('open');
+      i.querySelector('.fa').style.maxHeight='0';
+    });
+    if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+  });
+});
+
+document.getElementById('payBtn').addEventListener('click',async function(){
+  var btn=this;
+  btn.disabled=true;
+  btn.textContent='Redirection vers le paiement...';
+  var lat=selectedLat!==null?selectedLat:48.8566;
+  var lon=selectedLon!==null?selectedLon:2.3522;
+  var ville=selectedVille||'';
+  var heure=document.getElementById('heure').value;
+  var birth_date=heure?document.getElementById('dob').value+'T'+heure+':00':document.getElementById('dob').value+'T00:00:00';
+  try{
+    var response=await fetch('https://web-production-37fb.up.railway.app/api/create-checkout-session',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        product_slug:'mission-de-vie',
+        prenom:document.getElementById('prenom').value.trim(),
+        email:document.getElementById('email').value.trim(),
+        birth_date:birth_date,
+        latitude:lat,
+        longitude:lon,
+        ville:ville
+      })
+    });
+    var data=await response.json();
+    if(data.checkout_url){
+      window.location.href=data.checkout_url;
+    }else{
+      throw new Error(data.error||'Erreur inconnue');
+    }
+  }catch(err){
+    console.error('Checkout error:',err);
+    btn.disabled=false;
+    btn.textContent='Mission de Vie — 27€ →';
+    alert('Une erreur est survenue. Merci de réessayer.');
+  }
+});
+</script>
+</body>
+</html>
