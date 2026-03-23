@@ -51,26 +51,12 @@ const FALLBACK_PRODUCTS = [
     price: 0,
     billing_type: 'recurring',
     payment_link_url: null,
-    deployment_url: 'https://transits.guillaumeastro.com',
+    deployment_url: 'https://guillaumeastro.com/newsletter',
     accent_color: '#27ae60',
     cta_label: 'Rejoindre - Gratuit',
     themes: ['transits', 'energie'],
     upsell_product_slug: 'red-flags-astrologiques',
     is_free: true,
-  },
-  {
-    product_name: 'Style Amoureux Astro',
-    product_slug: 'style-amoureux',
-    product_level: 'micro',
-    price: 12,
-    billing_type: 'one_time',
-    payment_link_url: 'https://buy.stripe.com/6oUfZi9NC0yXdHS1yMbwk0a',
-    deployment_url: 'https://style-amoureux.guillaumeastro.com',
-    accent_color: '#e91e8c',
-    cta_label: 'Style Amoureux Astro - 12€',
-    themes: ['amour', 'relations'],
-    upsell_product_slug: 'astromatch',
-    is_free: false,
   },
   {
     product_name: 'Mission de Vie',
@@ -236,6 +222,23 @@ function isRenderableProduct(product) {
   return Boolean(product.product_name) && Boolean(product.deployment_url || product.payment_link_url);
 }
 
+function normalizeProduct(product) {
+  const slug = normalizeKey(product?.product_slug);
+  const normalized = { ...product };
+
+  if (slug === 'newslettergratuite') {
+    normalized.deployment_url = 'https://guillaumeastro.com/newsletter';
+    normalized.payment_link_url = null;
+  }
+
+  return normalized;
+}
+
+function shouldPublishProduct(product) {
+  const slug = normalizeKey(product?.product_slug);
+  return slug !== 'styleamoureux';
+}
+
 async function queryNotion(body) {
   const response = await fetch(NOTION_URL, {
     method: 'POST',
@@ -284,7 +287,12 @@ module.exports = async function handler(_req, res) {
     }
 
     const products = Array.isArray(data?.results)
-      ? data.results.filter(isLiveProduct).map(mapProduct).filter(isRenderableProduct)
+      ? data.results
+          .filter(isLiveProduct)
+          .map(mapProduct)
+          .map(normalizeProduct)
+          .filter(isRenderableProduct)
+          .filter(shouldPublishProduct)
       : [];
 
     if (!products.length) {
