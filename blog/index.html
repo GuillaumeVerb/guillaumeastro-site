@@ -39,6 +39,8 @@ h1 em{font-style:italic;color:var(--accent2)}
 .filter-row{display:flex;gap:.6rem;flex-wrap:wrap}
 .filter-btn{background:var(--bg-el);border:1px solid var(--border);border-radius:999px;padding:.38rem .95rem;font-size:.79rem;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
 .filter-btn:hover,.filter-btn.active{background:rgba(124,106,247,.12);border-color:rgba(124,106,247,.3);color:var(--accent2)}
+.filters-feedback{margin-top:1rem;min-height:1.2rem;font-size:.84rem;color:var(--muted)}
+.filters-feedback.is-error{color:#f2b8b5}
 
 /* ARTICLES GRID */
 #articles{padding:1rem 0 6rem}
@@ -52,7 +54,7 @@ h1 em{font-style:italic;color:var(--accent2)}
 .card-tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.7rem;display:block}
 .card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;line-height:1.3;color:var(--text);margin-bottom:.6rem}
 .card-title em{font-style:italic;color:var(--accent2)}
-.card-excerpt{font-size:.84rem;color:var(--muted);line-height:1.65;flex:1}
+.card-copy{font-size:.84rem;color:var(--muted);line-height:1.65;flex:1}
 .card-bottom{padding:1.2rem 1.6rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);margin-top:1.2rem}
 .card-date{font-size:.73rem;color:var(--muted)}
 .card-arrow{font-size:.8rem;color:var(--accent2)}
@@ -62,7 +64,7 @@ h1 em{font-style:italic;color:var(--accent2)}
 @media(min-width:640px){
 .featured .card-top{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;padding:2rem 2rem 0}
 .featured .card-title{font-size:1.5rem}
-.featured .card-excerpt{font-size:.9rem}
+.featured .card-copy{font-size:.9rem}
 }
 
 /* CTA BAND */
@@ -112,59 +114,14 @@ nav{padding:.8rem 1rem;justify-content:center;gap:.7rem;flex-wrap:wrap}
 
 <section id="filters">
   <div class="wrap">
-    <div class="filter-row">
-      <button class="filter-btn active" data-cat="all">Tous</button>
-      <button class="filter-btn" data-cat="amour">Amour &amp; relations</button>
-      <button class="filter-btn" data-cat="planetes">Planètes</button>
-      <button class="filter-btn" data-cat="maisons">Maisons</button>
-    </div>
+    <div class="filter-row" id="filter-row" aria-live="polite"></div>
+    <p class="filters-feedback" id="filters-feedback"></p>
   </div>
 </section>
 
 <section id="articles">
   <div class="wrap">
-    <div class="grid" id="article-grid">
-
-      <!-- FEATURED -->
-      <a href="./venus-scorpion-relation-amoureuse.html" class="article-card featured" data-cat="amour planetes">
-        <div class="card-top">
-          <div>
-            <span class="card-tag">Amour &amp; relations</span>
-            <div class="card-title">Vénus en Scorpion :<br><em>pourquoi tu aimes</em> si intensément</div>
-          </div>
-          <p class="card-excerpt">Vénus en Scorpion ne fait rien à moitié. Cette position planétaire crée des attirances magnétiques, des jalousies profondes, et une capacité à transformer les relations en expériences de vie majeures. Tout ce que ça révèle sur tes patterns amoureux.</p>
-        </div>
-        <div class="card-bottom">
-          <span class="card-date">Mars 2025</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-
-      <a href="./listicle_pluton.html" class="article-card" data-cat="planetes">
-        <div class="card-top">
-          <span class="card-tag">Planètes</span>
-          <div class="card-title">7 signes que tu as <em>Pluton fort</em> dans ton thème natal</div>
-          <p class="card-excerpt">Pluton fort dans un thème natal se reconnaît vite : intensité, lucidité, rapports de force, instinct de transformation. Voici les signes les plus parlants et ce qu'ils révèlent vraiment.</p>
-        </div>
-        <div class="card-bottom">
-          <span class="card-date">Mars 2025</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-
-      <a href="./deep_dive_maison8.html" class="article-card" data-cat="maisons">
-        <div class="card-top">
-          <span class="card-tag">Maisons</span>
-          <div class="card-title">La Maison 8 : <em>guide complet</em> sur la transformation, l'intimité et les zones d'ombre</div>
-          <p class="card-excerpt">Une lecture complète de la Maison 8 : ce qu'elle gouverne vraiment, ce que les planètes y changent, et ce qu'elle dit de ton rapport à l'intimité, au pouvoir et à la perte de contrôle.</p>
-        </div>
-        <div class="card-bottom">
-          <span class="card-date">Mars 2025</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-
-    </div>
+    <div class="grid" id="article-grid" aria-live="polite"></div>
   </div>
 </section>
 
@@ -198,21 +155,104 @@ nav{padding:.8rem 1rem;justify-content:center;gap:.7rem;flex-wrap:wrap}
   }
 })();
 
-// FILTERS
-document.querySelectorAll('.filter-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');
-    var cat=btn.dataset.cat;
-    document.querySelectorAll('.article-card').forEach(function(card){
-      if(cat==='all'||card.dataset.cat.includes(cat)){
-        card.style.display='flex';
-      } else {
-        card.style.display='none';
-      }
+(function(){
+  var grid=document.getElementById('article-grid');
+  var filterRow=document.getElementById('filter-row');
+  var feedbackEl=document.getElementById('filters-feedback');
+  var activeCategory='all';
+  var posts=[];
+
+  function escapeHtml(value){
+    return String(value ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  function slugifyCategory(value){
+    return String(value || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g,'')
+      .toLowerCase()
+      .replace(/&/g,' et ')
+      .replace(/[^a-z0-9]+/g,'-')
+      .replace(/^-+|-+$/g,'');
+  }
+
+  function renderFilters(items){
+    var html=['<button class="filter-btn' + (activeCategory === 'all' ? ' active' : '') + '" data-cat="all">Tous</button>'];
+    items.forEach(function(label){
+      var slug=slugifyCategory(label);
+      html.push('<button class="filter-btn' + (activeCategory === slug ? ' active' : '') + '" data-cat="' + escapeHtml(slug) + '">' + escapeHtml(label) + '</button>');
     });
-  });
-});
+    filterRow.innerHTML=html.join('');
+    filterRow.querySelectorAll('.filter-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        activeCategory=btn.getAttribute('data-cat') || 'all';
+        renderFilters(items);
+        renderPosts();
+      });
+    });
+  }
+
+  function renderPosts(){
+    var filtered=posts.filter(function(post){
+      return activeCategory === 'all' || (Array.isArray(post.categorySlugs) && post.categorySlugs.indexOf(activeCategory) !== -1);
+    });
+
+    if(!filtered.length){
+      grid.innerHTML='<p class="card-copy">Aucun article ne correspond à ce filtre pour le moment.</p>';
+      return;
+    }
+
+    grid.innerHTML=filtered.map(function(post,index){
+      var meta=[post.dateLabel, post.readingTime].filter(Boolean).join(' · ');
+      var featuredClass=index === 0 ? ' featured' : '';
+      return [
+        '<a href="' + escapeHtml(post.path || post.url || '#') + '" class="article-card' + featuredClass + '">',
+        '<div class="card-top">',
+        '<div>',
+        '<span class="card-tag">' + escapeHtml(post.primaryCategory || 'Blog') + '</span>',
+        '<div class="card-title">' + escapeHtml(post.title || 'Article') + '</div>',
+        '</div>',
+        '<p class="card-copy">' + escapeHtml(post.description || '') + '</p>',
+        '</div>',
+        '<div class="card-bottom">',
+        '<span class="card-date">' + escapeHtml(meta) + '</span>',
+        '<span class="card-arrow">→</span>',
+        '</div>',
+        '</a>'
+      ].join('');
+    }).join('');
+  }
+
+  async function loadPosts(){
+    try{
+      var response=await fetch('/api/blog-posts');
+      if(!response.ok){
+        throw new Error('API error ' + response.status);
+      }
+      var payload=await response.json();
+      posts=Array.isArray(payload.posts) ? payload.posts : [];
+      var categories=Array.isArray(payload.categories) ? payload.categories : [];
+
+      renderFilters(categories);
+      renderPosts();
+      feedbackEl.textContent=posts.length ? '' : 'Aucun article disponible pour le moment.';
+      feedbackEl.classList.remove('is-error');
+    }catch(error){
+      console.error('Failed to render blog index', error);
+      filterRow.innerHTML='';
+      grid.innerHTML='';
+      feedbackEl.textContent='Les articles du blog ne sont pas disponibles pour le moment.';
+      feedbackEl.classList.add('is-error');
+    }
+  }
+
+  if(grid && filterRow){loadPosts();}
+})();
 </script>
 </body>
 </html>

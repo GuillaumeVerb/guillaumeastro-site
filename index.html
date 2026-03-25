@@ -112,6 +112,9 @@ h2 em{font-style:italic;color:var(--accent2)}
 .blog-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:.5rem}
 .blog-title em{font-style:italic;color:var(--accent2)}
 .blog-date{font-size:.72rem;color:var(--muted)}
+.blog-copy{font-size:.84rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem}
+.blog-feedback{margin-top:1rem;min-height:1.2rem;font-size:.84rem;color:var(--muted)}
+.blog-feedback.is-error{color:#f2b8b5}
 
 /* TIKTOK */
 #tiktok{padding:4rem 0;border-top:1px solid var(--border);text-align:center}
@@ -242,23 +245,8 @@ nav{padding:.85rem 1rem;justify-content:center;gap:.75rem;flex-wrap:wrap}
       </div>
       <a href="https://guillaumeastro.com/blog/" class="blog-link">Tous les articles →</a>
     </div>
-    <div class="blog-grid">
-      <a href="https://guillaumeastro.com/blog/venus-scorpion-relation-amoureuse.html" class="blog-card">
-        <span class="blog-tag">Amour &amp; relations</span>
-        <div class="blog-title">Vénus en Scorpion : <em>pourquoi tu aimes</em> si intensément</div>
-        <div class="blog-date">Mars 2025 · 8 min</div>
-      </a>
-      <a href="https://guillaumeastro.com/blog/maison-8-guide-complet" class="blog-card">
-        <span class="blog-tag">Maisons</span>
-        <div class="blog-title">La Maison 8 : <em>guide complet</em> sur la transformation</div>
-        <div class="blog-date">Mars 2025 · 12 min</div>
-      </a>
-      <a href="https://guillaumeastro.com/blog/7-signes-pluton-fort-theme-natal" class="blog-card">
-        <span class="blog-tag">Planètes</span>
-        <div class="blog-title">7 signes que tu as <em>Pluton fort</em> dans ton thème natal</div>
-        <div class="blog-date">Mars 2025 · 7 min</div>
-      </a>
-    </div>
+    <div class="blog-grid" id="blog-grid" aria-live="polite"></div>
+    <p class="blog-feedback" id="blog-feedback"></p>
   </div>
 </section>
 
@@ -412,6 +400,60 @@ nav{padding:.85rem 1rem;justify-content:center;gap:.75rem;flex-wrap:wrap}
 
   if(countEl){countEl.textContent='...';}
   if(grid){loadProducts();}
+})();
+
+(function(){
+  var grid=document.getElementById('blog-grid');
+  var feedbackEl=document.getElementById('blog-feedback');
+
+  function escapeHtml(value){
+    return String(value ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  function renderCard(post){
+    var meta=[post.dateLabel, post.readingTime].filter(Boolean).join(' · ');
+    return [
+      '<a href="' + escapeHtml(post.path || post.url || '#') + '" class="blog-card">',
+      '<span class="blog-tag">' + escapeHtml(post.primaryCategory || 'Blog') + '</span>',
+      '<div class="blog-title">' + escapeHtml(post.title || 'Article') + '</div>',
+      '<p class="blog-copy">' + escapeHtml(post.description || '') + '</p>',
+      '<div class="blog-date">' + escapeHtml(meta) + '</div>',
+      '</a>'
+    ].join('');
+  }
+
+  async function loadPosts(){
+    try{
+      var response=await fetch('/api/blog-posts?limit=3');
+      if(!response.ok){
+        throw new Error('API error ' + response.status);
+      }
+      var payload=await response.json();
+      var posts=Array.isArray(payload.posts) ? payload.posts : [];
+
+      if(!posts.length){
+        grid.innerHTML='';
+        feedbackEl.textContent='Aucun article disponible pour le moment.';
+        return;
+      }
+
+      grid.innerHTML=posts.map(renderCard).join('');
+      feedbackEl.textContent='';
+      feedbackEl.classList.remove('is-error');
+    }catch(error){
+      console.error('Failed to render blog preview', error);
+      grid.innerHTML='';
+      feedbackEl.textContent='Les derniers articles ne sont pas disponibles pour le moment.';
+      feedbackEl.classList.add('is-error');
+    }
+  }
+
+  if(grid){loadPosts();}
 })();
 </script>
 </body>
