@@ -374,6 +374,63 @@
       text-align:center;
     }
 
+    .footer-social{
+      display:flex;
+      justify-content:center;
+      gap:.65rem;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .footer-social-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.52rem .88rem;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+      font-size:.84rem;
+      transition:border-color .2s, transform .15s, color .2s;
+    }
+
+    .footer-social-link:hover{
+      border-color:rgba(139,124,255,.3);
+      color:var(--text);
+      transform:translateY(-1px);
+    }
+
+    .footer-social-link svg{
+      width:14px;
+      height:14px;
+      display:block;
+    }
+
+    .footer-social-link.is-tiktok{
+      color:#9af7f3;
+    }
+
+    .footer-social-link.is-youtube{
+      color:#ff8b8b;
+    }
+
+    .footer-social-link.is-instagram{
+      color:#ffb1c6;
+    }
+
+    .footer-social-link.is-tiktok:hover{
+      border-color:rgba(37,244,238,.35);
+    }
+
+    .footer-social-link.is-youtube:hover{
+      border-color:rgba(255,0,0,.35);
+    }
+
+    .footer-social-link.is-instagram:hover{
+      border-color:rgba(255,84,120,.35);
+    }
+
     @media (max-width: 920px){
       .hero-grid,
       .grid-3,
@@ -635,6 +692,11 @@
         <a href="https://guillaumeastro.com">Accueil</a> ·
         <a href="https://guillaumeastro.com/blog/">Blog</a> ·
         <a href="https://transits.guillaumeastro.com">Newsletter personnalisée</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.tiktok.com/@guillaumeastro" class="footer-social-link is-tiktok" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v8.2a4.2 4.2 0 1 1-3-4.03"/><path d="M14 4c1 1.9 2.57 3 4.7 3.2"/></svg><span>TikTok</span></a>
+        <a href="https://www.youtube.com/@GuillaumeAstro-i9u" class="footer-social-link is-youtube" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6.5" width="17" height="11" rx="3.5"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube</span></a>
+        <a href="https://www.instagram.com/guillaume_astro/" class="footer-social-link is-instagram" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
       </div>
     </div>
   </footer>

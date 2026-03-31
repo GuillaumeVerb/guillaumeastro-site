@@ -116,13 +116,31 @@ h2 em{font-style:italic;color:var(--accent2)}
 .blog-feedback{margin-top:1rem;min-height:1.2rem;font-size:.84rem;color:var(--muted)}
 .blog-feedback.is-error{color:#f2b8b5}
 
-/* TIKTOK */
-#tiktok{padding:4rem 0;border-top:1px solid var(--border);text-align:center}
-.tiktok-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;max-width:540px;margin:0 auto}
-.tiktok-inner h2{font-size:1.5rem;margin-bottom:.6rem}
-.tiktok-inner p{font-size:.9rem;color:var(--muted);margin-bottom:1.4rem}
-.btn-tiktok{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-el);border:1px solid var(--border);color:var(--text);padding:.75rem 1.5rem;border-radius:8px;font-size:.9rem;text-decoration:none;transition:border-color .2s}
-.btn-tiktok:hover{border-color:rgba(124,106,247,.3)}
+/* SOCIAL */
+#social{padding:4rem 0;border-top:1px solid var(--border);text-align:center}
+.social-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;max-width:720px;margin:0 auto}
+.social-inner h2{font-size:1.5rem;margin-bottom:.6rem}
+.social-inner p{font-size:.9rem;color:var(--muted);margin-bottom:1.6rem}
+.social-grid{display:grid;grid-template-columns:1fr;gap:.9rem}
+.social-link{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--bg-el);border:1px solid var(--border);color:var(--text);padding:1rem 1.1rem;border-radius:12px;text-decoration:none;transition:border-color .2s,transform .15s}
+.social-link:hover{border-color:rgba(124,106,247,.3);transform:translateY(-2px)}
+.social-link.is-tiktok:hover{border-color:rgba(37,244,238,.35)}
+.social-link.is-youtube:hover{border-color:rgba(255,0,0,.35)}
+.social-link.is-instagram:hover{border-color:rgba(255,84,120,.35)}
+.social-main{display:flex;align-items:center;gap:.9rem}
+.social-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(124,106,247,.18),rgba(124,106,247,.06));border:1px solid rgba(124,106,247,.18);color:var(--accent2);flex-shrink:0}
+.social-icon svg{width:18px;height:18px;display:block}
+.social-link.is-tiktok .social-icon{background:linear-gradient(135deg,rgba(37,244,238,.16),rgba(254,44,85,.08));border-color:rgba(37,244,238,.22);color:#9af7f3}
+.social-link.is-youtube .social-icon{background:linear-gradient(135deg,rgba(255,0,0,.16),rgba(255,255,255,.04));border-color:rgba(255,0,0,.2);color:#ff8b8b}
+.social-link.is-instagram .social-icon{background:linear-gradient(135deg,rgba(255,84,120,.18),rgba(255,166,0,.08));border-color:rgba(255,84,120,.22);color:#ffb1c6}
+.social-copy{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.social-name{font-size:.95rem;font-weight:500}
+.social-handle{font-size:.82rem;color:var(--muted)}
+.social-arrow{color:var(--accent2);font-size:.92rem}
+.social-link.is-tiktok .social-arrow{color:#9af7f3}
+.social-link.is-youtube .social-arrow{color:#ff8b8b}
+.social-link.is-instagram .social-arrow{color:#ffb1c6}
+@media(min-width:640px){.social-grid{grid-template-columns:repeat(3,1fr)}.social-link{min-height:92px}}
 
 footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
 .flogo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:.7rem}
@@ -130,6 +148,16 @@ footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
 footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--accent2)}
+.footer-social{display:flex;justify-content:center;gap:.65rem;flex-wrap:wrap;margin:.8rem 0 .55rem}
+.footer-social-link{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .82rem;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.02);font-size:.78rem;transition:border-color .2s,transform .15s,color .2s}
+.footer-social-link:hover{border-color:rgba(124,106,247,.3);transform:translateY(-1px)}
+.footer-social-link svg{width:14px;height:14px;display:block}
+.footer-social-link.is-tiktok{color:#9af7f3}
+.footer-social-link.is-youtube{color:#ff8b8b}
+.footer-social-link.is-instagram{color:#ffb1c6}
+.footer-social-link.is-tiktok:hover{border-color:rgba(37,244,238,.35)}
+.footer-social-link.is-youtube:hover{border-color:rgba(255,0,0,.35)}
+.footer-social-link.is-instagram:hover{border-color:rgba(255,84,120,.35)}
 @media(max-width:720px){
 nav{padding:.85rem 1rem;justify-content:center;gap:.75rem;flex-wrap:wrap}
 .nav-links{gap:.8rem 1rem;justify-content:center;flex-wrap:wrap}
@@ -250,14 +278,49 @@ nav{padding:.85rem 1rem;justify-content:center;gap:.75rem;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="tiktok">
+<section id="social">
   <div class="wrap">
-    <div class="tiktok-inner">
-      <h2>35 000 personnes <em>déjà là</em></h2>
-      <p>Des analyses courtes, des décryptages planétaires, et des réponses aux questions que tu te poses sur ton thème natal — chaque semaine sur TikTok.</p>
-      <a href="https://tiktok.com/@guillaumeastro" class="btn-tiktok">
-        ♪ Suivre @guillaumeastro
-      </a>
+    <div class="social-inner">
+      <h2>Retrouve-moi sur <em>mes réseaux</em></h2>
+      <p>Formats courts, analyses plus visuelles et contenu du quotidien astro : choisis la plateforme qui te parle le plus.</p>
+      <div class="social-grid">
+        <a href="https://www.tiktok.com/@guillaumeastro" class="social-link is-tiktok" target="_blank" rel="noreferrer">
+          <span class="social-main">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v8.2a4.2 4.2 0 1 1-3-4.03"/><path d="M14 4c1 1.9 2.57 3 4.7 3.2"/></svg>
+            </span>
+            <span class="social-copy">
+              <span class="social-name">TikTok</span>
+              <span class="social-handle">@guillaumeastro</span>
+            </span>
+          </span>
+          <span class="social-arrow">→</span>
+        </a>
+        <a href="https://www.youtube.com/@GuillaumeAstro-i9u" class="social-link is-youtube" target="_blank" rel="noreferrer">
+          <span class="social-main">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6.5" width="17" height="11" rx="3.5"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="social-copy">
+              <span class="social-name">YouTube</span>
+              <span class="social-handle">@GuillaumeAstro-i9u</span>
+            </span>
+          </span>
+          <span class="social-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/guillaume_astro/" class="social-link is-instagram" target="_blank" rel="noreferrer">
+          <span class="social-main">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="social-copy">
+              <span class="social-name">Instagram</span>
+              <span class="social-handle">@guillaume_astro</span>
+            </span>
+          </span>
+          <span class="social-arrow">→</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -273,6 +336,11 @@ nav{padding:.85rem 1rem;justify-content:center;gap:.75rem;flex-wrap:wrap}
       <a href="https://transits.guillaumeastro.com">Transits</a> ·
       <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
     </p>
+    <div class="footer-social">
+      <a href="https://www.tiktok.com/@guillaumeastro" class="footer-social-link is-tiktok" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v8.2a4.2 4.2 0 1 1-3-4.03"/><path d="M14 4c1 1.9 2.57 3 4.7 3.2"/></svg><span>TikTok</span></a>
+      <a href="https://www.youtube.com/@GuillaumeAstro-i9u" class="footer-social-link is-youtube" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6.5" width="17" height="11" rx="3.5"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube</span></a>
+      <a href="https://www.instagram.com/guillaume_astro/" class="footer-social-link is-instagram" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+    </div>
     <p style="margin-top:.5rem"><a href="mailto:contact@guillaumeastro.com">contact@guillaumeastro.com</a> · <a href="#">Mentions légales</a></p>
   </div>
 </footer>
