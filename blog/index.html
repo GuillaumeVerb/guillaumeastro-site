@@ -68,6 +68,18 @@ h1 em{font-style:italic;color:var(--accent2)}
 .featured .card-copy{font-size:.9rem}
 }
 
+/* GUIDES BAND */
+#guides-band{padding:4rem 0;border-top:1px solid var(--border)}
+.guides-band-inner{background:linear-gradient(135deg,rgba(124,106,247,.06),rgba(10,10,15,.4));border:1px solid rgba(124,106,247,.15);border-radius:20px;padding:2.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.guides-band-text{flex:1;min-width:200px}
+.guides-band-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:.7rem;line-height:1.2}
+.guides-band-text h2 em{font-style:italic;color:var(--accent2)}
+.guides-band-text p{color:var(--muted);font-size:.9rem;max-width:420px;line-height:1.7}
+.guides-band-links{display:flex;flex-direction:column;gap:.7rem;flex-shrink:0}
+.guide-link{display:block;background:var(--bg-el);border:1px solid var(--border);border-radius:10px;padding:.75rem 1.4rem;font-size:.86rem;color:var(--text);text-decoration:none;transition:border-color .2s,background .2s;white-space:nowrap}
+.guide-link:hover{border-color:rgba(124,106,247,.3);background:rgba(124,106,247,.07);color:var(--accent2)}
+@media(max-width:640px){.guides-band-links{flex-direction:row;flex-wrap:wrap}}
+
 /* CTA BAND */
 #cta-band{padding:5rem 0;text-align:center;border-top:1px solid var(--border)}
 .cta-band-inner{background:linear-gradient(135deg,rgba(124,106,247,.08),rgba(10,10,15,.4));border:1px solid rgba(124,106,247,.18);border-radius:20px;padding:3rem 2rem}
@@ -109,6 +121,7 @@ nav{padding:.8rem 1rem;justify-content:center;gap:.7rem;flex-wrap:wrap}
   <a href="https://guillaumeastro.com" class="logo">Guillaume<em>Astro</em></a>
   <div class="nav-links">
     <a href="https://guillaumeastro.com/blog/" class="active">Blog</a>
+    <a href="https://guillaumeastro.com/blog/guides/">Guides</a>
     <a href="https://guillaumeastro.com/newsletter">Newsletter gratuite</a>
     <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
     <a href="https://astro-red-flags.guillaumeastro.com" class="ncta">Red Flags — 12€</a>
@@ -133,6 +146,23 @@ nav{padding:.8rem 1rem;justify-content:center;gap:.7rem;flex-wrap:wrap}
 <section id="articles">
   <div class="wrap">
     <div class="grid" id="article-grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="guides-band">
+  <div class="wrap">
+    <div class="guides-band-inner">
+      <div class="guides-band-text">
+        <span class="eyebrow">Encyclopédie Astrologique</span>
+        <h2>Comprendre les bases :<br><em>signes, planètes, maisons</em></h2>
+        <p>Des guides complets et rigoureux — du Bélier à Pluton, de la Maison 1 à la Maison 12. L'astrologie expliquée en profondeur, au-delà des horoscopes.</p>
+      </div>
+      <div class="guides-band-links">
+        <a href="https://guillaumeastro.com/blog/guides/signes/" class="guide-link">♈ Les 12 Signes</a>
+        <a href="https://guillaumeastro.com/blog/guides/planetes/" class="guide-link">☿ Les Planètes</a>
+        <a href="https://guillaumeastro.com/blog/guides/maisons/" class="guide-link">🏠 Les Maisons</a>
+      </div>
+    </div>
   </div>
 </section>
 
