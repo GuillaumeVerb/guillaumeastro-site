@@ -1,4 +1,16 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/blog/deep_dive_maison8",
+      "destination": "/blog/maison-8-guide-complet",
+      "permanent": true
+    },
+    {
+      "source": "/blog/listicle_pluton",
+      "destination": "/blog/7-signes-pluton-fort-theme-natal",
+      "permanent": true
+    }
+  ]
 }

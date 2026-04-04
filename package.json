@@ -2,7 +2,8 @@
   "name": "guillaumeastro-site",
   "private": true,
   "scripts": {
-    "dev": "vercel dev"
+    "dev": "vercel dev",
+    "new-article": "node scripts/new-article.js"
   },
   "devDependencies": {
     "vercel": "^50.33.0"
