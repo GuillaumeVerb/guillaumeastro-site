@@ -92,6 +92,17 @@ h1 em{font-style:italic;color:var(--accent2)}
 .guide-link:hover{border-color:rgba(124,106,247,.3);background:rgba(124,106,247,.07);color:var(--accent2)}
 @media(max-width:640px){.guides-band-links{flex-direction:row;flex-wrap:wrap}}
 
+/* OPINION BAND */
+#opinion-band{padding:4rem 0;border-top:1px solid var(--border)}
+.opinion-band-inner{background:linear-gradient(135deg,rgba(124,106,247,.06),rgba(10,10,15,.4));border:1px solid rgba(124,106,247,.15);border-radius:20px;padding:2.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.opinion-band-text{flex:1;min-width:200px}
+.opinion-band-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:.7rem;line-height:1.2}
+.opinion-band-text h2 em{font-style:italic;color:var(--accent2)}
+.opinion-band-text p{color:var(--muted);font-size:.9rem;max-width:420px;line-height:1.7}
+.opinion-band-cta{flex-shrink:0}
+.opinion-link{display:inline-block;background:var(--bg-el);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.6rem;font-size:.9rem;color:var(--text);text-decoration:none;transition:border-color .2s,background .2s}
+.opinion-link:hover{border-color:rgba(124,106,247,.3);background:rgba(124,106,247,.07);color:var(--accent2)}
+
 /* CTA BAND */
 #cta-band{padding:5rem 0;text-align:center;border-top:1px solid var(--border)}
 .cta-band-inner{background:linear-gradient(135deg,rgba(124,106,247,.08),rgba(10,10,15,.4));border:1px solid rgba(124,106,247,.18);border-radius:20px;padding:3rem 2rem}
@@ -173,6 +184,21 @@ nav{padding:.8rem 1rem;justify-content:center;gap:.7rem;flex-wrap:wrap}
         <a href="https://guillaumeastro.com/blog/guides/signes/" class="guide-link">♈ Les 12 Signes</a>
         <a href="https://guillaumeastro.com/blog/guides/planetes/" class="guide-link">☿ Les Planètes</a>
         <a href="https://guillaumeastro.com/blog/guides/maisons/" class="guide-link">🏠 Les Maisons</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opinion-band">
+  <div class="wrap">
+    <div class="opinion-band-inner">
+      <div class="opinion-band-text">
+        <span class="eyebrow">Point de vue</span>
+        <h2>Ce que je pense vraiment<br><em>de l'astrologie</em></h2>
+        <p>Pourquoi l'horoscope quotidien ne peut pas te parler. Ce que l'astrologie réelle fait à la place. Des prises de position claires, argumentées, sans langue de bois.</p>
+      </div>
+      <div class="opinion-band-cta">
+        <a href="https://guillaumeastro.com/blog/opinion/" class="opinion-link">Lire les opinions →</a>
       </div>
     </div>
   </div>
