@@ -170,6 +170,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://guillaumeastro.com/blog/guides/lune/vierge</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://guillaumeastro.com/blog/guides/lune/balance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
