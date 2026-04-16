@@ -194,6 +194,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/lune/verseau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Guides Concepts -->
   <url>
