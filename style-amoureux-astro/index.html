@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style Amoureux Astro</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#111118;--bg-el:#16161f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8888a0;--accent:#c97d44;--accent2:#e8a87c;--glow:rgba(232,168,124,0.18);--err:#e74c3c}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+#sf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.st{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,4s) ease-in-out infinite;opacity:0}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:var(--o,.5)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--accent2)}
+.ncta{background:var(--accent);color:#fff;border:none;padding:.5rem 1.1rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;transition:background .2s}
+.ncta:hover{background:var(--accent2)}
+section{position:relative;z-index:1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 5rem;text-align:center}
+#hero .wrap{width:100%}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-el);border:1px solid var(--border);border-radius:999px;padding:.38rem 1rem;font-size:.79rem;color:var(--muted);margin-bottom:2rem}
+.bd{width:6px;height:6px;background:var(--accent2);border-radius:50%;animation:pu 2s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,5vw,3.3rem);font-weight:600;line-height:1.2;margin-bottom:1.4rem}
+h1 em{font-style:italic;color:var(--accent2)}
+.sub{font-size:1.03rem;color:var(--muted);max-width:540px;margin:0 auto 2.4rem;line-height:1.85}
+.cta{display:inline-block;background:var(--accent);color:#fff;padding:.95rem 2.2rem;border-radius:8px;font-size:.98rem;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;box-shadow:0 0 28px var(--glow);animation:gp 3s ease-in-out infinite;transition:transform .15s;cursor:pointer}
+.cta:hover{transform:translateY(-2px)}
+@keyframes gp{0%,100%{box-shadow:0 0 22px var(--glow)}50%{box-shadow:0 0 44px rgba(232,168,124,.32)}}
+.checks{margin-top:1.2rem;font-size:.79rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.sl{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:.9rem;display:block}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:600;line-height:1.25;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--accent2)}
+#rapport{padding:6rem 0}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2.4rem;margin-top:2rem}
+.rf{list-style:none;display:flex;flex-direction:column;gap:.9rem}
+.rf li{display:flex;align-items:flex-start;gap:.7rem;font-size:.93rem;color:var(--muted)}
+.rf li::before{content:"◆";color:var(--accent2);font-size:.58rem;margin-top:.42rem;flex-shrink:0}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.8rem}
+@media(max-width:480px){.pg{grid-template-columns:1fr}}
+.pc{background:var(--bg-el);border:1px solid var(--border);border-radius:12px;padding:1.4rem}
+.pct{font-family:'Playfair Display',serif;font-size:.96rem;font-weight:600;margin-bottom:.4rem}
+.pc p{font-size:.85rem;color:var(--muted)}
+#benefices{padding:4rem 0}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2.5rem}
+@media(min-width:560px){.sg{grid-template-columns:repeat(4,1fr)}}
+.sc{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.7rem 1rem;text-align:center}
+.sn{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:600;color:var(--accent2);line-height:1;margin-bottom:.4rem}
+.sl2{font-size:.78rem;color:var(--muted);line-height:1.4}
+#form{padding:6rem 0}
+.fc{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2.8rem 2.4rem;margin-top:2.2rem}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.8rem}
+@media(max-width:500px){.fg{grid-template-columns:1fr}}
+.fg-item{display:flex;flex-direction:column;gap:.35rem}
+.full{grid-column:1/-1}
+.cg{position:relative}
+label{font-size:.79rem;color:var(--muted)}
+input{background:var(--bg-el);border:1px solid var(--border);border-radius:8px;padding:.72rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;width:100%}
+input:focus{border-color:rgba(232,168,124,.45)}
+input::placeholder{color:var(--muted);opacity:.55}
+input.err{border-color:var(--err)!important}
+.hint{font-size:.73rem;color:var(--muted);opacity:.7}
+.ferr{font-size:.73rem;color:var(--err);display:none}
+.ferr.show{display:block}
+#cs{position:absolute;top:100%;left:0;right:0;background:var(--bg-el);border:1px solid rgba(232,168,124,.3);border-top:none;border-radius:0 0 8px 8px;z-index:50;display:none;max-height:180px;overflow-y:auto}
+.si{padding:.62rem 1rem;font-size:.84rem;color:var(--muted);cursor:pointer;border-bottom:1px solid var(--border);transition:background .12s}
+.si:last-child{border-bottom:none}
+.si:hover{background:rgba(232,168,124,.08);color:var(--text)}
+.btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:1.05rem;font-family:'DM Sans',sans-serif;font-size:.98rem;font-weight:500;cursor:pointer;box-shadow:0 0 28px var(--glow);transition:transform .15s,background .2s,opacity .2s}
+.btn:hover:not(:disabled){background:var(--accent2);transform:translateY(-1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.fchk{display:flex;justify-content:center;gap:1.4rem;margin-top:.9rem;font-size:.76rem;color:var(--muted);flex-wrap:wrap}
+.spin-wrap{display:none;text-align:center;padding:1.8rem 0}
+.spin-wrap.on{display:block}
+.spin{width:34px;height:34px;border:2px solid var(--border);border-top-color:var(--accent2);border-radius:50%;animation:sp .75s linear infinite;margin:0 auto .9rem}
+@keyframes sp{to{transform:rotate(360deg)}}
+.spin-txt{color:var(--muted);font-size:.88rem}
+#result{display:none;margin-top:2rem}
+#result.on{display:block}
+.rp{background:var(--bg-el);border:1px solid var(--border);border-radius:12px;padding:1.8rem;margin-bottom:1.4rem;text-align:center}
+.rp h3{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:.5rem}
+.rp p{color:var(--muted);font-size:.88rem;margin-bottom:1.1rem}
+.li-wrap{display:flex;flex-direction:column;gap:.5rem}
+.li{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.78rem 1rem;font-size:.84rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+.pw{background:linear-gradient(135deg,rgba(232,168,124,.09),rgba(10,10,15,.5));border:1px solid rgba(232,168,124,.22);border-radius:16px;padding:2rem;text-align:center}
+.pw h3{font-family:'Playfair Display',serif;font-size:1.35rem;margin-bottom:.6rem}
+.pw>p{color:var(--muted);font-size:.88rem;margin-bottom:1.4rem}
+.pwf{list-style:none;text-align:left;margin-bottom:1.6rem;display:flex;flex-direction:column;gap:.55rem}
+.pwf li{font-size:.86rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+.pwf li::before{content:"✓";color:var(--accent2);font-weight:500}
+.price{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:600}
+.plbl{font-size:.78rem;color:var(--muted);margin:.2rem 0 1.4rem}
+.btnpay{display:block;width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:1.05rem;font-family:'DM Sans',sans-serif;font-size:.98rem;font-weight:500;cursor:pointer;text-decoration:none;box-shadow:0 0 28px var(--glow);transition:transform .15s,background .2s;margin-bottom:.7rem;text-align:center}
+.btnpay:hover:not(:disabled){background:var(--accent2);transform:translateY(-1px)}
+.btnpay:disabled{opacity:.7;cursor:wait}
+.guar{font-size:.76rem;color:var(--muted)}
+#testi{padding:6rem 0}
+.tg{display:grid;grid-template-columns:1fr;gap:1.1rem;margin-top:2.4rem}
+@media(min-width:640px){.tg{grid-template-columns:repeat(3,1fr)}}
+.te{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.7rem}
+.ts{font-size:.82rem;color:#f39c12;margin-bottom:.75rem;letter-spacing:2px}
+.te p{font-size:.88rem;color:var(--muted);font-style:italic;margin-bottom:.9rem;line-height:1.72}
+.ta{font-size:.78rem;color:var(--text);font-weight:500}
+#faq{padding:5rem 0}
+.fl{margin-top:2.2rem;display:flex;flex-direction:column;gap:.7rem}
+.fi{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.fq{width:100%;background:none;border:none;padding:1.15rem 1.4rem;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.93rem;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .15s}
+.fq:hover{color:var(--accent2)}
+.fch{color:var(--muted);font-size:.75rem;transition:transform .25s;flex-shrink:0}
+.fi.open .fch{transform:rotate(180deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.fai{padding:0 1.4rem 1.15rem;font-size:.86rem;color:var(--muted);line-height:1.78}
+footer{padding:3rem 0;border-top:1px solid var(--border);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:.7rem}
+.flogo em{font-style:italic;color:var(--accent2)}
+footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div id="sf"></div>
+<nav>
+  <a href="#" class="logo">Style <em>Amoureux</em> Astro</a>
+  <a href="#form" class="ncta">Découvrir mon style amoureux →</a>
+</nav>
+<section id="hero">
+  <div class="wrap">
+    <div class="badge"><span class="bd"></span>+ de 800 personnes ont déjà découvert leur style amoureux</div>
+    <h1>Découvre comment tu<br><em>aimes vraiment</em><br>— et ce que ton thème natal dit de ton style amoureux unique</h1>
+    <p class="sub">Vénus, la Lune, Mars et ton Ascendant révèlent la façon dont tu aimes, dont tu te connectes, dont tu attires — et ce qui te rend unique en amour.</p>
+    <a href="#form" class="cta">Découvrir mon style amoureux →</a>
+    <div class="checks">
+      <span>✓ Rapport personnalisé</span>
+      <span>✓ PDF livré en 5 min</span>
+      <span>✓ Satisfait ou remboursé 7 jours</span>
+    </div>
+  </div>
+</section>
+<section id="rapport">
+  <div class="wrap">
+    <span class="sl">Le rapport</span>
+    <h2>Un document <em>précis et personnel</em><br>sur ton style amoureux unique</h2>
+    <p style="color:var(--muted);font-size:.94rem;">Chaque rapport est généré à partir de ton thème natal complet. Rien de générique — chaque phrase est personnalisée à ta combinaison planétaire unique.</p>
+    <div class="card">
+      <ul class="rf">
+        <li>Introduction personnalisée — ton profil amoureux résumé en quelques mots clés révélateurs</li>
+        <li>Ton style d'amour selon Vénus — comment tu aimes, ce que tu cherches et ce qui t'attire profondément</li>
+        <li>Tes besoins émotionnels selon la Lune — ce dont tu as besoin pour te sentir en sécurité en relation</li>
+        <li>Ton énergie de désir selon Mars — comment tu séduis, tu t'engages et tu exprimes ta passion</li>
+        <li>Ton image en amour selon l'Ascendant — la première impression que tu donnes et l'énergie que tu projettes</li>
+        <li>Ton profil amoureux synthèse — 3 mots qui définissent ta façon unique d'aimer</li>
+      </ul>
+    </div>
+    <div class="pg">
+      <div class="pc"><div class="pct">♀ Vénus &amp; style d'amour</div><p>Ce que tu cherches chez l'autre, comment tu aimes et ce qui te fait vibrer profondément en relation.</p></div>
+      <div class="pc"><div class="pct">🌙 Lune &amp; besoins émotionnels</div><p>Comment tu gères l'intimité, tes besoins affectifs et ce qui te nourrit vraiment en amour.</p></div>
+      <div class="pc"><div class="pct">♂ Mars &amp; désir</div><p>Comment tu séduis, tu passes à l'action et tu exprimes ton énergie amoureuse et passionnelle.</p></div>
+      <div class="pc"><div class="pct">↑ Ascendant &amp; image en amour</div><p>L'énergie que tu projettes, la première impression que tu donnes et comment les autres te perçoivent.</p></div>
+    </div>
+  </div>
+</section>
+<section id="benefices">
+  <div class="wrap" style="text-align:center">
+    <span class="sl">Ce que tu reçois</span>
+    <h2>Bien plus qu'un horoscope.<br><em>Une carte de ton style amoureux.</em></h2>
+    <div class="sg">
+      <div class="sc"><div class="sn">6</div><div class="sl2">Pages personnalisées</div></div>
+      <div class="sc"><div class="sn">4</div><div class="sl2">Planètes analysées</div></div>
+      <div class="sc"><div class="sn">10+</div><div class="sl2">Points planétaires</div></div>
+      <div class="sc"><div class="sn">∞</div><div class="sl2">Conseils concrets</div></div>
+    </div>
+  </div>
+</section>
+<section id="form">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="sl">Calcul de ton rapport</span>
+      <h2>Renseigne ta date de naissance</h2>
+      <p style="color:var(--muted);margin-top:.45rem;font-size:.92rem;">Aucun compte requis · Données non conservées</p>
+    </div>
+    <div class="fc">
+      <div class="fg">
+        <div class="fg-item full">
+          <label for="prenom">Prénom *</label>
+          <input type="text" id="prenom" placeholder="Ton prénom" autocomplete="given-name">
+          <span class="ferr" id="err-prenom">Ce champ est requis.</span>
+        </div>
+        <div class="fg-item">
+          <label for="dob">Date de naissance *</label>
+          <input type="date" id="dob">
+          <span class="ferr" id="err-dob">Ce champ est requis.</span>
+        </div>
+        <div class="fg-item">
+          <label for="heure">Heure de naissance</label>
+          <input type="time" id="heure">
+          <span class="hint">Laisse vide si inconnue</span>
+        </div>
+        <div class="fg-item full cg" id="vg">
+          <label for="ville">Ville de naissance</label>
+          <input type="text" id="ville" placeholder="Paris, Lyon, Montréal…" autocomplete="off">
+          <span class="hint">La ville suffit — pas besoin d'adresse exacte</span>
+          <div id="cs"></div>
+        </div>
+        <div class="fg-item full">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="ton@email.com" autocomplete="email">
+          <span class="ferr" id="err-email">Ce champ est requis.</span>
+        </div>
+      </div>
+      <button class="btn" id="sbtn">Analyser mon thème natal →</button>
+      <div class="fchk">
+        <span>✓ Résultat immédiat</span>
+        <span>✓ Aucun compte requis</span>
+        <span>✓ Données non conservées</span>
+      </div>
+      <div class="spin-wrap" id="spw">
+        <div class="spin"></div>
+        <p class="spin-txt">Calcul de ton thème natal en cours…</p>
+      </div>
+      <div id="result">
+        <div class="rp">
+          <h3>Ton style amoureux, <span id="pnom"></span></h3>
+          <p>Voici ce que ton thème natal révèle. Ton style amoureux complet est dévoilé dans le rapport personnalisé.</p>
+          <div class="li-wrap">
+            <div class="li">🔒 Vénus — ton style d'amour &amp; ce que tu cherches vraiment</div>
+            <div class="li">🔒 Lune — tes besoins émotionnels &amp; ton attachement</div>
+            <div class="li">🔒 Mars &amp; Ascendant — ton désir &amp; ton image en amour</div>
+          </div>
+        </div>
+        <div class="pw">
+          <h3>Débloquer mon rapport complet</h3>
+          <p>Accède à l'analyse complète de ton style amoureux avec Vénus, la Lune, Mars et l'Ascendant — explications planétaires, manifestations concrètes et conseils personnalisés.</p>
+          <ul class="pwf">
+            <li>Ton style d'amour selon Vénus détaillé avec explication planétaire</li>
+            <li>Tes besoins émotionnels profonds révélés par la Lune</li>
+            <li>Ton énergie de désir et de séduction selon Mars</li>
+            <li>Ton image en amour et énergie projetée selon l'Ascendant</li>
+            <li>Rapport PDF de 6 pages téléchargeable immédiatement</li>
+          </ul>
+          <div class="price">12€</div>
+          <div class="plbl">Prix de lancement · paiement unique · rapport livré par email en 5 min</div>
+          <button class="btnpay" id="payBtn">Style Amoureux Astro — 12€ →</button>
+          <p class="guar">✓ Satisfait ou remboursé sous 7 jours, sans condition</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testi">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="sl">Retours</span>
+      <h2><em>Ce que les étoiles</em> ont révélé</h2>
+    </div>
+    <div class="tg">
+      <div class="te"><div class="ts">★★★★★</div><p>« J'ai enfin compris pourquoi j'aime de la façon dont j'aime. La partie sur ma Vénus m'a donné des mots que je n'avais pas. »</p><div class="ta">Léa M., 29 ans</div></div>
+      <div class="te"><div class="ts">★★★★★</div><p>« Je m'attendais à quelque chose de vague. C'était précis, nuancé, et ça parlait vraiment de ma façon d'aimer et de me connecter. »</p><div class="ta">Thomas R., 34 ans</div></div>
+      <div class="te"><div class="ts">★★★★★</div><p>« La partie sur ma Lune et mes besoins émotionnels m'a complètement parlé. J'ai relu trois fois et envoyé le lien à ma sœur. »</p><div class="ta">Camille D., 26 ans</div></div>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="sl">Questions fréquentes</span>
+      <h2>Ce que tu veux <em>savoir</em></h2>
+    </div>
+    <div class="fl">
+      <div class="fi"><button class="fq" data-faq="0">L'heure de naissance est-elle obligatoire ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Non — si tu ne la connais pas, laisse le champ vide. L'heure permet de calculer l'Ascendant avec précision, mais tous les autres points planétaires (Vénus, Lune, Mars) restent pleinement analysés sans elle.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="1">Comment je reçois mon rapport ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Le rapport PDF est généré après paiement et envoyé par email en moins de 5 minutes. Tu peux aussi le télécharger depuis la page de confirmation.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="2">Est-ce que ça dit comment je dois aimer ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Non — le rapport décrit ton style amoureux naturel, pas ce que tu devrais faire. Le ton est bienveillant et descriptif, jamais prescriptif. Il s'agit de mieux te comprendre, pas de te changer.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="3">Quelle différence avec un horoscope classique ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Un horoscope se base sur ton seul signe solaire. Ce rapport prend en compte Vénus, la Lune, Mars et l'Ascendant en interaction dans ton thème complet — pour une image bien plus précise et personnelle de ton style amoureux.</div></div></div>
+      <div class="fi"><button class="fq" data-faq="4">Et si je ne suis pas satisfait ?<span class="fch">▼</span></button><div class="fa"><div class="fai">Satisfait ou remboursé sous 7 jours, sans condition. Envoie un email à contact@guillaumeastro.com — remboursement sous 48h.</div></div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="flogo">Style <em>Amoureux</em> Astro</div>
+    <p>© 2025 · Rapport personnalisé · Tous droits réservés</p>
+    <p><a href="mailto:contact@guillaumeastro.com">contact@guillaumeastro.com</a> · <a href="#">Mentions légales</a> · <a href="#">CGV</a></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var el=document.getElementById('sf');
+  for(var i=0;i<120;i++){
+    var s=document.createElement('div');s.className='st';
+    var sz=Math.random()*2+.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--d:'+(3+Math.random()*5)+'s;--o:'+(0.2+Math.random()*0.55)+';animation-delay:'+(Math.random()*6)+'s';
+    el.appendChild(s);
+  }
+})();
+
+var acT;
+var vi=document.getElementById('ville');
+var cs=document.getElementById('cs');
+var selectedLat=null;
+var selectedLon=null;
+var selectedVille=null;
+vi.addEventListener('input',function(){
+  clearTimeout(acT);
+  selectedLat=null;selectedLon=null;selectedVille=null;
+  var q=this.value.trim();
+  if(q.length<2){cs.style.display='none';return;}
+  acT=setTimeout(function(){
+    fetch('https://nominatim.openstreetmap.org/search?q='+encodeURIComponent(q)+'&format=json&limit=6&featuretype=city&accept-language=fr')
+      .then(function(r){return r.json();})
+      .then(function(data){
+        cs.innerHTML='';
+        if(!data.length){cs.style.display='none';return;}
+        data.forEach(function(place){
+          var label=place.display_name.split(',').slice(0,3).map(function(p){return p.trim();}).join(', ');
+          var item=document.createElement('div');item.className='si';item.textContent=label;
+          item.addEventListener('mousedown',function(e){
+            e.preventDefault();
+            vi.value=label;
+            selectedLat=parseFloat(place.lat);
+            selectedLon=parseFloat(place.lon);
+            selectedVille=label;
+            cs.style.display='none';
+          });
+          cs.appendChild(item);
+        });
+        cs.style.display='block';
+      }).catch(function(){});
+  },320);
+});
+document.addEventListener('click',function(e){if(!e.target.closest('#vg'))cs.style.display='none';});
+
+function setErr(id,show){
+  var el=document.getElementById(id);
+  var er=document.getElementById('err-'+id);
+  if(show){el.classList.add('err');er.classList.add('show');}
+  else{el.classList.remove('err');er.classList.remove('show');}
+}
+document.getElementById('prenom').addEventListener('input',function(){setErr('prenom',false);});
+document.getElementById('dob').addEventListener('input',function(){setErr('dob',false);});
+
+function doSubmit(){
+  var prenom=document.getElementById('prenom').value.trim();
+  var dob=document.getElementById('dob').value;
+  setErr('prenom',!prenom);
+  setErr('dob',!dob);
+  if(!prenom||!dob)return;
+  var btn=document.getElementById('sbtn');
+  btn.disabled=true;btn.textContent='Calcul en cours…';
+  document.getElementById('spw').classList.add('on');
+  setTimeout(function(){
+    document.getElementById('spw').classList.remove('on');
+    document.getElementById('pnom').textContent=prenom;
+    var res=document.getElementById('result');
+    res.classList.add('on');
+    res.scrollIntoView({behavior:'smooth',block:'start'});
+    btn.disabled=false;btn.textContent='Analyser mon thème natal →';
+  },2600);
+}
+document.getElementById('sbtn').addEventListener('click',doSubmit);
+document.querySelectorAll('#form input').forEach(function(inp){
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')doSubmit();});
+});
+
+document.querySelectorAll('.fq').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item=btn.closest('.fi');
+    var ans=item.querySelector('.fa');
+    var open=item.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(function(i){
+      i.classList.remove('open');
+      i.querySelector('.fa').style.maxHeight='0';
+    });
+    if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+  });
+});
+
+document.getElementById('payBtn').addEventListener('click',async function(){
+  var btn=this;
+  btn.disabled=true;
+  btn.textContent='Redirection vers le paiement...';
+  var lat=selectedLat!==null?selectedLat:48.8566;
+  var lon=selectedLon!==null?selectedLon:2.3522;
+  var ville=selectedVille||'';
+  var heure=document.getElementById('heure').value;
+  var birth_date=heure?document.getElementById('dob').value+'T'+heure+':00':document.getElementById('dob').value+'T00:00:00';
+  try{
+    var response=await fetch('https://web-production-37fb.up.railway.app/api/create-checkout-session',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        product_slug:'style-amoureux-astro',
+        prenom:document.getElementById('prenom').value.trim(),
+        email:document.getElementById('email').value.trim(),
+        birth_date:birth_date,
+        latitude:lat,
+        longitude:lon,
+        ville:ville
+      })
+    });
+    var data=await response.json();
+    if(data.checkout_url){
+      window.location.href=data.checkout_url;
+    }else{
+      throw new Error(data.error||'Erreur inconnue');
+    }
+  }catch(err){
+    console.error('Checkout error:',err);
+    btn.disabled=false;
+    btn.textContent='Style Amoureux Astro — 12€ →';
+    alert('Une erreur est survenue. Merci de réessayer.');
+  }
+});
+</script>
+</body>
+</html>
