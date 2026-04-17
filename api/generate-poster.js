@@ -97,13 +97,18 @@ const PRINTFUL_VARIANTS = {
 };
 
 /** Crée une commande d'impression sur Printful. */
-async function createPrintfulOrder({ pdfUrl, recipientName, recipientEmail, sessionId, withFrame }) {
+async function createPrintfulOrder({ pdfUrl, recipientName, recipientEmail, address1, address2, city, zip, country, sessionId, withFrame }) {
   const variantId = withFrame ? PRINTFUL_VARIANTS.poster_framed : PRINTFUL_VARIANTS.poster;
 
   const body = {
     recipient: {
-      name:  recipientName,
-      email: recipientEmail,
+      name:         recipientName,
+      email:        recipientEmail,
+      address1,
+      address2:     address2 || undefined,
+      city,
+      zip,
+      country_code: country || 'FR',
     },
     items: [
       {
@@ -202,7 +207,8 @@ module.exports = async function handler(req, res) {
 
   const session  = event.data.object;
   const meta     = session.metadata || {};
-  const { name, birthDate, birthDateISO, birthTime, birthTimeISO, birthPlace, email, withFrame } = meta;
+  const { name, birthDate, birthDateISO, birthTime, birthTimeISO, birthPlace, email, withFrame,
+          shippingName, address1, address2, city, zip, country } = meta;
   const isFramed = withFrame === '1';
 
   if (!name || !birthDate || !birthTime || !birthPlace) {
@@ -241,8 +247,13 @@ module.exports = async function handler(req, res) {
     // 7. Commande Printful
     const printfulOrder = await createPrintfulOrder({
       pdfUrl,
-      recipientName:  name,
+      recipientName:  shippingName || name,
       recipientEmail: email,
+      address1,
+      address2,
+      city,
+      zip,
+      country:        country || 'FR',
       sessionId,
       withFrame:      isFramed,
     });

@@ -28,9 +28,12 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, birthDate, birthDateISO, birthTime, birthTimeISO, birthPlace, email, withFrame } = req.body || {};
+  const {
+    name, birthDate, birthDateISO, birthTime, birthTimeISO, birthPlace, email, withFrame,
+    shippingName, address1, address2, city, zip, country,
+  } = req.body || {};
 
-  const missing = ['name', 'birthDate', 'birthTime', 'birthPlace', 'email'].filter(
+  const missing = ['name', 'birthDate', 'birthTime', 'birthPlace', 'email', 'shippingName', 'address1', 'city', 'zip'].filter(
     k => !req.body?.[k]?.trim()
   );
   if (missing.length) {
@@ -72,7 +75,13 @@ module.exports = async function handler(req, res) {
         birthTimeISO: birthTimeISO || birthTime,
         birthPlace,
         email,
-        withFrame: withFrame ? '1' : '0',
+        withFrame:    withFrame ? '1' : '0',
+        shippingName,
+        address1,
+        address2:     address2 || '',
+        city,
+        zip,
+        country:      country || 'FR',
       },
       success_url: `${process.env.SITE_URL || 'https://guillaumeastro.com'}/poster/merci?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url:  `${process.env.SITE_URL  || 'https://guillaumeastro.com'}/poster`,

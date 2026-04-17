@@ -100,6 +100,10 @@ h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-
 .form-group input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(.5);cursor:pointer}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 .form-note{font-size:.75rem;color:var(--muted);margin-bottom:1.4rem;padding:.7rem .9rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;line-height:1.6}
+.form-section-title{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin:1.2rem 0 .8rem;padding-top:1rem;border-top:1px solid var(--border)}
+.form-group select{background:var(--bg-el);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:border-color .2s;width:100%;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238888a0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-group select:focus{border-color:rgba(124,106,247,.5)}
+.form-group select option{background:#16161f}
 .form-error{font-size:.82rem;color:#f2b8b5;margin-top:.8rem;min-height:1.2rem;display:none}
 .form-error.visible{display:block}
 
@@ -242,6 +246,46 @@ footer a:hover{color:var(--accent2)}
               <input type="email" id="email" name="email" placeholder="toi@mail.com" required>
             </div>
 
+            <div class="form-section-title">Adresse de livraison</div>
+            <div class="form-group">
+              <label for="shippingName">Nom complet</label>
+              <input type="text" id="shippingName" name="shippingName" placeholder="Marie Dupont" required>
+            </div>
+            <div class="form-group">
+              <label for="address1">Adresse</label>
+              <input type="text" id="address1" name="address1" placeholder="12 rue des Étoiles" required>
+            </div>
+            <div class="form-group">
+              <label for="address2">Complément (optionnel)</label>
+              <input type="text" id="address2" name="address2" placeholder="Apt 3B">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">Ville</label>
+                <input type="text" id="city" name="city" placeholder="Paris" required>
+              </div>
+              <div class="form-group">
+                <label for="zip">Code postal</label>
+                <input type="text" id="zip" name="zip" placeholder="75001" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Pays</label>
+              <select id="country" name="country" required>
+                <option value="FR" selected>France</option>
+                <option value="BE">Belgique</option>
+                <option value="CH">Suisse</option>
+                <option value="CA">Canada</option>
+                <option value="LU">Luxembourg</option>
+                <option value="MC">Monaco</option>
+                <option value="DE">Allemagne</option>
+                <option value="ES">Espagne</option>
+                <option value="IT">Italie</option>
+                <option value="GB">Royaume-Uni</option>
+                <option value="US">États-Unis</option>
+              </select>
+            </div>
+
             <div class="form-note">
               🔒 Tes données sont utilisées uniquement pour générer ton poster. Elles ne sont pas revendues ni stockées après impression.
             </div>
@@ -337,15 +381,21 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   errorEl.classList.remove('visible');
 
-  const name       = document.getElementById('name').value.trim();
-  const birthDate  = document.getElementById('birthDate').value;   // YYYY-MM-DD
-  const birthTime  = document.getElementById('birthTime').value;   // HH:MM
-  const birthPlace = document.getElementById('birthPlace').value.trim();
-  const email      = document.getElementById('email').value.trim();
+  const name         = document.getElementById('name').value.trim();
+  const birthDate    = document.getElementById('birthDate').value;
+  const birthTime    = document.getElementById('birthTime').value;
+  const birthPlace   = document.getElementById('birthPlace').value.trim();
+  const email        = document.getElementById('email').value.trim();
+  const shippingName = document.getElementById('shippingName').value.trim();
+  const address1     = document.getElementById('address1').value.trim();
+  const address2     = document.getElementById('address2').value.trim();
+  const city         = document.getElementById('city').value.trim();
+  const zip          = document.getElementById('zip').value.trim();
+  const country      = document.getElementById('country').value;
 
   // Validation front
-  if (!name || !birthDate || !birthTime || !birthPlace || !email) {
-    showError('Merci de remplir tous les champs.');
+  if (!name || !birthDate || !birthTime || !birthPlace || !email || !shippingName || !address1 || !city || !zip) {
+    showError('Merci de remplir tous les champs obligatoires.');
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -369,6 +419,12 @@ form.addEventListener('submit', async (e) => {
         birthPlace,
         email,
         withFrame,
+        shippingName,
+        address1,
+        address2,
+        city,
+        zip,
+        country,
       }),
     });
 
