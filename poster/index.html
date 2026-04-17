@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poster Thème Natal — Guillaume Astro</title>
+<meta name="description" content="Ton thème natal imprimé en poster A3. Planètes, maisons, aspects — une œuvre personnalisée livrée chez toi.">
+<link rel="canonical" href="https://guillaumeastro.com/poster">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Poster Thème Natal — Guillaume Astro">
+<meta property="og:description" content="Ton thème natal imprimé en poster A3. Planètes, maisons, aspects — une œuvre personnalisée livrée chez toi.">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://guillaumeastro.com/poster">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Guillaume Astro">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script defer src="https://ton-umami.railway.app/script.js" data-website-id="08afa55d-c1f4-4643-93b3-bc96e09a89d9"></script>
+<style>
+:root{--bg:#0a0a0f;--bg-card:#111118;--bg-el:#16161f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8888a0;--accent:#7c6af7;--accent2:#a395f9;--gold:#c9a84c;--glow:rgba(124,106,247,0.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* STARS */
+#sf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.st{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,4s) ease-in-out infinite;opacity:0}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:var(--o,.4)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.ncta{background:var(--accent);color:#fff !important;padding:.5rem 1.1rem;border-radius:6px;font-size:.84rem;font-weight:500 !important;text-decoration:none;transition:background .2s}
+.ncta:hover{background:var(--accent2) !important}
+
+section{position:relative;z-index:1}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.5rem}
+.sl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:.9rem;display:block}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;line-height:1.15;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--accent2)}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;line-height:1.2;margin-bottom:.8rem}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:.95rem 2rem;border-radius:8px;font-size:.96rem;font-weight:500;text-decoration:none;box-shadow:0 0 28px var(--glow);transition:transform .15s,box-shadow .2s;border:none;cursor:pointer;width:100%;text-align:center}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 0 40px rgba(124,106,247,.35)}
+.btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+/* HERO */
+#hero{padding:8rem 0 4rem;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-el);border:1px solid var(--border);border-radius:999px;padding:.38rem 1rem;font-size:.79rem;color:var(--muted);margin-bottom:2rem}
+.bd{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pu 2s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto 1.8rem;line-height:1.85}
+.price-display{display:inline-flex;align-items:baseline;gap:.5rem;margin-bottom:.6rem}
+.price-amount{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:600;color:var(--text)}
+.price-currency{font-size:1.2rem;color:var(--muted)}
+.price-sub{font-size:.82rem;color:var(--muted);margin-bottom:2rem}
+
+/* POSTER PREVIEW */
+.preview-wrap{position:relative;max-width:280px;margin:0 auto 3.5rem}
+.preview-glow{position:absolute;inset:-30px;background:radial-gradient(ellipse at 50% 50%,rgba(124,106,247,.18),transparent 70%);pointer-events:none}
+.poster-thumb{width:100%;border-radius:12px;border:1px solid rgba(201,168,76,.25);box-shadow:0 24px 60px rgba(0,0,0,.55);display:block;overflow:hidden;background:#03030d;aspect-ratio:1/1.414;position:relative}
+.thumb-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1.2rem}
+.thumb-ring{width:110px;height:110px;border-radius:50%;border:1.5px solid rgba(124,106,247,.4);position:relative;display:flex;align-items:center;justify-content:center}
+.thumb-ring::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(201,168,76,.3)}
+.thumb-ring::after{content:'☽';font-size:1.6rem;color:var(--accent2)}
+.thumb-planets{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-top:.4rem}
+.thumb-planet{font-size:.9rem;opacity:.7}
+.thumb-name{font-family:'Playfair Display',serif;font-size:.75rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem}
+.thumb-divider{width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);margin:.3rem 0}
+.thumb-label{font-size:.55rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+
+/* COMMANDE */
+#commande{padding:1rem 0 6rem}
+.commande-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start}
+@media(min-width:720px){.commande-grid{grid-template-columns:1fr 1fr}}
+
+/* FEATURES */
+.features-list{display:flex;flex-direction:column;gap:1rem}
+.feature-item{display:flex;align-items:flex-start;gap:.9rem;padding:1rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.feature-icon{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;font-size:1rem;background:rgba(124,106,247,.12);border:1px solid rgba(124,106,247,.2)}
+.feature-body h4{font-size:.9rem;font-weight:500;margin-bottom:.2rem}
+.feature-body p{font-size:.8rem;color:var(--muted);line-height:1.55}
+.proof-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.proof-pill{font-size:.74rem;color:var(--muted);background:var(--bg-el);border:1px solid var(--border);border-radius:999px;padding:.3rem .75rem}
+
+/* FORM */
+.form-card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--bg-card);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.8rem;position:relative;overflow:hidden}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));opacity:.8}
+.form-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;margin-bottom:1.4rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem}
+.form-group label{font-size:.8rem;color:var(--muted);font-weight:400}
+.form-group input{background:var(--bg-el);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:border-color .2s;width:100%}
+.form-group input:focus{border-color:rgba(124,106,247,.5)}
+.form-group input::placeholder{color:rgba(136,136,160,.5)}
+.form-group input[type="date"]::-webkit-calendar-picker-indicator,
+.form-group input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(.5);cursor:pointer}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form-note{font-size:.75rem;color:var(--muted);margin-bottom:1.4rem;padding:.7rem .9rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;line-height:1.6}
+.form-error{font-size:.82rem;color:#f2b8b5;margin-top:.8rem;min-height:1.2rem;display:none}
+.form-error.visible{display:block}
+
+/* PRODUCT CHOICE */
+.product-choice{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.2rem}
+.product-option{cursor:pointer;border:1px solid rgba(255,255,255,.1);border-radius:10px;transition:border-color .2s,background .2s}
+.product-option:hover{border-color:rgba(124,106,247,.35)}
+.product-option.selected{border-color:rgba(124,106,247,.6);background:rgba(124,106,247,.07)}
+.product-option-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;gap:1rem}
+.product-option-info{display:flex;flex-direction:column;gap:.15rem}
+.product-option-name{font-size:.88rem;font-weight:500;color:var(--text)}
+.product-option-desc{font-size:.75rem;color:var(--muted)}
+.product-option-price{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--accent2);white-space:nowrap}
+
+/* FOOTER */
+footer{padding:2.5rem 0;border-top:1px solid var(--border);text-align:center}
+footer p{font-size:.78rem;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+</style>
+</head>
+<body>
+
+<div id="sf"></div>
+
+<nav>
+  <a href="/" class="logo">Guillaume<em>Astro</em></a>
+  <div class="nav-links">
+    <a href="/blog/">Blog</a>
+    <a href="/newsletter">Newsletter gratuite</a>
+    <a href="https://astromatch.guillaumeastro.com">AstroMatch</a>
+    <a href="https://astro-red-flags.guillaumeastro.com" class="ncta">Red Flags — 12€</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="badge"><span class="bd"></span>Nouveau · Produit physique</div>
+    <h1>Ton thème natal<br><em>en poster A3</em></h1>
+    <p class="hero-sub">Planètes, maisons, aspects majeurs — tout ton thème natal visualisé sur un poster imprimé et livré chez toi.</p>
+
+    <div class="preview-wrap">
+      <div class="preview-glow"></div>
+      <div class="poster-thumb">
+        <div class="thumb-inner">
+          <div class="thumb-name">Ton Prénom</div>
+          <div class="thumb-divider"></div>
+          <div class="thumb-ring"></div>
+          <div class="thumb-planets">
+            <span class="thumb-planet">☉</span><span class="thumb-planet">☽</span>
+            <span class="thumb-planet">☿</span><span class="thumb-planet">♀</span>
+            <span class="thumb-planet">♂</span><span class="thumb-planet">♃</span>
+            <span class="thumb-planet">♄</span><span class="thumb-planet">♅</span>
+          </div>
+          <div class="thumb-divider"></div>
+          <div class="thumb-label">Thème natal · Format A3</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-display">
+      <span class="price-amount">45</span>
+      <span class="price-currency">€</span>
+    </div>
+    <p class="price-sub">Impression matte A2 · dès 45€ · Livraison incluse</p>
+  </div>
+</section>
+
+<section id="commande">
+  <div class="wrap">
+    <div class="commande-grid">
+
+      <!-- Colonne gauche : ce que tu reçois -->
+      <div>
+        <span class="sl">Ce que contient ton poster</span>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon">⭕</div>
+            <div class="feature-body">
+              <h4>Roue natale complète</h4>
+              <p>Les 10 planètes positionnées dans les 12 maisons avec leurs aspects (conjonctions, trigones, oppositions…)</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✦</div>
+            <div class="feature-body">
+              <h4>Soleil · Lune · Ascendant</h4>
+              <p>Tes trois piliers mis en avant avec leur signe et leur maison de naissance.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <div class="feature-body">
+              <h4>Tableau & dominantes</h4>
+              <p>Position de chaque planète, rétrogrades, et dominantes élémentaires (Feu, Terre, Air, Eau).</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🖨</div>
+            <div class="feature-body">
+              <h4>Imprimé sur papier matte A3</h4>
+              <p>Format 29,7 × 42 cm, papier matte premium. Fond noir profond, typographie Playfair.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-row">
+          <span class="proof-pill">✓ Calcul par API astronomique certifiée</span>
+          <span class="proof-pill">✓ Maisons Placidus</span>
+          <span class="proof-pill">✓ Livraison 5–10 jours</span>
+          <span class="proof-pill">✓ Satisfait ou remboursé</span>
+        </div>
+      </div>
+
+      <!-- Colonne droite : formulaire -->
+      <div>
+        <div class="form-card">
+          <h3>Tes données de naissance</h3>
+          <form id="posterForm" novalidate>
+            <div class="form-group">
+              <label for="name">Prénom affiché sur le poster</label>
+              <input type="text" id="name" name="name" placeholder="Marie" required maxlength="40">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="birthDate">Date de naissance</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+              </div>
+              <div class="form-group">
+                <label for="birthTime">Heure de naissance</label>
+                <input type="time" id="birthTime" name="birthTime" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="birthPlace">Ville de naissance</label>
+              <input type="text" id="birthPlace" name="birthPlace" placeholder="Paris, France" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email (pour le suivi de commande)</label>
+              <input type="email" id="email" name="email" placeholder="toi@mail.com" required>
+            </div>
+
+            <div class="form-note">
+              🔒 Tes données sont utilisées uniquement pour générer ton poster. Elles ne sont pas revendues ni stockées après impression.
+            </div>
+
+            <!-- Choix du produit -->
+            <div class="product-choice" id="productChoice">
+              <label class="product-option selected" data-value="0">
+                <input type="radio" name="withFrame" value="0" checked hidden>
+                <div class="product-option-inner">
+                  <div class="product-option-info">
+                    <span class="product-option-name">Sans cadre</span>
+                    <span class="product-option-desc">Poster matte A2 · 42×59 cm</span>
+                  </div>
+                  <span class="product-option-price">45€</span>
+                </div>
+              </label>
+              <label class="product-option" data-value="1">
+                <input type="radio" name="withFrame" value="1" hidden>
+                <div class="product-option-inner">
+                  <div class="product-option-info">
+                    <span class="product-option-name">Avec cadre noir ✦</span>
+                    <span class="product-option-desc">Poster matte A2 + cadre aluminium</span>
+                  </div>
+                  <span class="product-option-price">65€</span>
+                </div>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary" id="submitBtn">
+              Commander — <span id="priceLabel">45€</span> →
+            </button>
+            <div class="form-error" id="formError"></div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2025 Guillaume Astro · <a href="/">Retour à l'accueil</a></p>
+  </div>
+</footer>
+
+<script>
+// ── Stars ──────────────────────────────────────────────────────────────────
+const sf = document.getElementById('sf');
+for (let i = 0; i < 60; i++) {
+  const s = document.createElement('div');
+  s.className = 'st';
+  const sz = Math.random() * 1.8 + 0.6;
+  s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${3+Math.random()*5}s;--o:${.15+Math.random()*.35};animation-delay:${Math.random()*6}s`;
+  sf.appendChild(s);
+}
+
+// ── Format helpers ─────────────────────────────────────────────────────────
+const MONTHS_FR = ['janvier','février','mars','avril','mai','juin',
+                   'juillet','août','septembre','octobre','novembre','décembre'];
+
+function formatDateFR(isoDate) {
+  // "1992-05-15" → "15 mai 1992"
+  const [y, m, d] = isoDate.split('-');
+  return `${parseInt(d)} ${MONTHS_FR[parseInt(m) - 1]} ${y}`;
+}
+
+function formatTimeFR(isoTime) {
+  // "14:30" → "14h30"
+  return isoTime.replace(':', 'h');
+}
+
+// ── Product choice ─────────────────────────────────────────────────────────
+const options    = document.querySelectorAll('.product-option');
+const priceLabel = document.getElementById('priceLabel');
+let withFrame    = false;
+
+options.forEach(opt => {
+  opt.addEventListener('click', () => {
+    options.forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    withFrame    = opt.dataset.value === '1';
+    priceLabel.textContent = withFrame ? '65€' : '45€';
+  });
+});
+
+// ── Form submit ────────────────────────────────────────────────────────────
+const form      = document.getElementById('posterForm');
+const submitBtn = document.getElementById('submitBtn');
+const errorEl   = document.getElementById('formError');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorEl.classList.remove('visible');
+
+  const name       = document.getElementById('name').value.trim();
+  const birthDate  = document.getElementById('birthDate').value;   // YYYY-MM-DD
+  const birthTime  = document.getElementById('birthTime').value;   // HH:MM
+  const birthPlace = document.getElementById('birthPlace').value.trim();
+  const email      = document.getElementById('email').value.trim();
+
+  // Validation front
+  if (!name || !birthDate || !birthTime || !birthPlace || !email) {
+    showError('Merci de remplir tous les champs.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showError('Email invalide.');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Redirection vers le paiement…';
+
+  try {
+    const res = await fetch('/api/create-poster-checkout', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        birthDate:    formatDateFR(birthDate),
+        birthDateISO: birthDate,
+        birthTime:    formatTimeFR(birthTime),
+        birthTimeISO: birthTime,
+        birthPlace,
+        email,
+        withFrame,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.url) {
+      throw new Error(data.error || 'Erreur inattendue.');
+    }
+
+    window.location.href = data.url;
+
+  } catch (err) {
+    showError(err.message || 'Une erreur est survenue. Réessaie dans quelques instants.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Commander mon poster — 39€ →';
+  }
+});
+
+function showError(msg) {
+  errorEl.textContent = msg;
+  errorEl.classList.add('visible');
+}
+</script>
+
+</body>
+</html>

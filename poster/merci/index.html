@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande reçue — Guillaume Astro</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script defer src="https://ton-umami.railway.app/script.js" data-website-id="08afa55d-c1f4-4643-93b3-bc96e09a89d9"></script>
+<style>
+:root{--bg:#0a0a0f;--bg-card:#111118;--bg-el:#16161f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8888a0;--accent:#7c6af7;--accent2:#a395f9;--gold:#c9a84c;--glow:rgba(124,106,247,0.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+#sf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.st{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,4s) ease-in-out infinite;opacity:0}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:var(--o,.4)}}
+.card{position:relative;z-index:1;max-width:520px;width:100%;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--bg-card);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:2.5rem;text-align:center;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));opacity:.85}
+.icon{width:64px;height:64px;border-radius:50%;background:rgba(124,106,247,.12);border:1px solid rgba(124,106,247,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.8rem;animation:sc .6s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes sc{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+h1{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;margin-bottom:.7rem}
+h1 em{font-style:italic;color:var(--accent2)}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:2rem;line-height:1.75}
+.steps{display:flex;flex-direction:column;gap:.75rem;text-align:left;margin-bottom:2rem}
+.step{display:flex;align-items:flex-start;gap:.85rem;padding:.85rem 1rem;background:var(--bg-el);border:1px solid var(--border);border-radius:10px}
+.step-num{width:26px;height:26px;border-radius:50%;background:rgba(124,106,247,.18);border:1px solid rgba(124,106,247,.3);display:grid;place-items:center;font-size:.72rem;font-weight:500;color:var(--accent2);flex-shrink:0}
+.step-text{font-size:.85rem;color:var(--muted);line-height:1.55}
+.step-text strong{color:var(--text);font-weight:500}
+.actions{display:flex;flex-direction:column;gap:.75rem}
+.btn-primary{display:block;background:var(--accent);color:#fff;padding:.9rem 1.5rem;border-radius:8px;font-size:.9rem;font-weight:500;text-decoration:none;text-align:center;box-shadow:0 0 24px var(--glow);transition:transform .15s}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{display:block;background:transparent;color:var(--muted);padding:.9rem 1.5rem;border-radius:8px;font-size:.88rem;text-decoration:none;text-align:center;border:1px solid var(--border);transition:border-color .2s,color .2s}
+.btn-secondary:hover{border-color:rgba(124,106,247,.3);color:var(--accent2)}
+</style>
+</head>
+<body>
+
+<div id="sf"></div>
+
+<div class="card">
+  <div class="icon">✨</div>
+  <h1>Commande <em>reçue</em></h1>
+  <p class="sub">Ton poster est en cours de génération. Tu recevras un email de confirmation dans quelques minutes, puis un second avec le suivi d'expédition.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Calcul de ton thème natal</strong><br>Positions planétaires précises à la minute près.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Génération du poster</strong><br>Mise en page personnalisée avec tes données.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Impression & expédition</strong><br>Papier matte A3, livraison sous 5–10 jours ouvrés.</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="https://astromatch.guillaumeastro.com" class="btn-primary">Explorer AstroMatch pendant l'attente →</a>
+    <a href="/" class="btn-secondary">Retour à l'accueil</a>
+  </div>
+</div>
+
+<script>
+const sf = document.getElementById('sf');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'st';
+  const sz = Math.random() * 2 + 0.5;
+  s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${3+Math.random()*5}s;--o:${.1+Math.random()*.4};animation-delay:${Math.random()*6}s`;
+  sf.appendChild(s);
+}
+</script>
+
+</body>
+</html>

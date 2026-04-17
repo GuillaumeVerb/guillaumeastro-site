@@ -2,8 +2,15 @@
   "name": "guillaumeastro-site",
   "private": true,
   "scripts": {
-    "dev": "vercel dev",
-    "new-article": "node scripts/new-article.js"
+    "dev": "POSTER_LOCAL=1 vercel dev",
+    "new-article": "node scripts/new-article.js",
+    "generate-poster": "POSTER_LOCAL=1 node scripts/test-poster.js"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "^123.0.1",
+    "@vercel/blob": "^0.23.4",
+    "puppeteer-core": "^22.6.0",
+    "stripe": "^15.11.0"
   },
   "devDependencies": {
     "vercel": "^50.33.0"
