@@ -234,9 +234,8 @@ function normalizeProduct(product) {
   return normalized;
 }
 
-function shouldPublishProduct(product) {
-  const slug = normalizeKey(product?.product_slug);
-  return slug !== 'styleamoureux';
+function shouldPublishProduct(_product) {
+  return true;
 }
 
 async function queryNotion(body) {
