@@ -86,6 +86,20 @@ const FALLBACK_PRODUCTS = [
     upsell_product_slug: 'astromatch',
     is_free: false,
   },
+  {
+    product_name: 'Portrait Astral',
+    product_slug: 'portrait-astral',
+    product_level: 'premium',
+    price: 47,
+    billing_type: 'one_time',
+    payment_link_url: 'https://guillaumeastro.com/portrait-astral',
+    deployment_url: 'https://guillaumeastro.com/portrait-astral',
+    accent_color: '#c9a84c',
+    cta_label: 'Portrait Astral — 47€',
+    themes: ['identite', 'psychologie', 'theme natal'],
+    upsell_product_slug: 'poster-theme-natal',
+    is_free: false,
+  },
 ];
 
 function normalizeKey(value) {
