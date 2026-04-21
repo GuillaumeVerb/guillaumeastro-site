@@ -232,6 +232,23 @@ footer a:hover{color:var(--accent)}
     <span class="sl">Commander mon guide</span>
     <h2>Ton année astrologique <em>2026</em></h2>
     <div class="fc">
+
+      <!-- Offres -->
+      <div class="offers" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem">
+        <div class="offer-card" id="offer-pdf" onclick="selectOffer('pdf')" style="background:var(--bg-el);border:2px solid var(--accent);border-radius:14px;padding:1.4rem;cursor:pointer;transition:border-color .2s">
+          <div style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem">PDF</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text);margin-bottom:.3rem">47€</div>
+          <div style="font-size:.82rem;color:var(--muted);line-height:1.5">Guide PDF 24 pages<br>Livré par email en 10 min</div>
+        </div>
+        <div class="offer-card" id="offer-bundle" onclick="selectOffer('bundle')" style="background:var(--bg-el);border:2px solid var(--border);border-radius:14px;padding:1.4rem;cursor:pointer;transition:border-color .2s;position:relative">
+          <div style="position:absolute;top:-10px;right:14px;background:var(--accent);color:#09090e;font-size:.7rem;font-weight:500;padding:.2rem .6rem;border-radius:999px">Recommandé</div>
+          <div style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem">PDF + Livre relié</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text);margin-bottom:.3rem">67€</div>
+          <div style="font-size:.82rem;color:var(--muted);line-height:1.5">PDF + livre hardcover A4<br>Expédié en 5–7 jours</div>
+        </div>
+      </div>
+
+      <!-- Champs naissance -->
       <div class="fg">
         <div class="fg-item">
           <label for="prenom">Prénom *</label>
@@ -262,6 +279,44 @@ footer a:hover{color:var(--accent)}
           <span class="ferr" id="err-ville">Ce champ est requis.</span>
         </div>
       </div>
+
+      <!-- Adresse livraison (bundle uniquement) -->
+      <div id="shipping-fields" style="display:none;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:.5rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.2rem">Adresse de livraison pour le livre relié</p>
+        <div class="fg">
+          <div class="fg-item full">
+            <label for="sh-name">Nom complet *</label>
+            <input type="text" id="sh-name" placeholder="Léa Dupont" autocomplete="name">
+            <span class="ferr" id="err-sh-name">Ce champ est requis.</span>
+          </div>
+          <div class="fg-item full">
+            <label for="sh-address">Adresse *</label>
+            <input type="text" id="sh-address" placeholder="12 rue des Lilas" autocomplete="street-address">
+            <span class="ferr" id="err-sh-address">Ce champ est requis.</span>
+          </div>
+          <div class="fg-item">
+            <label for="sh-city">Ville *</label>
+            <input type="text" id="sh-city" placeholder="Paris" autocomplete="address-level2">
+            <span class="ferr" id="err-sh-city">Ce champ est requis.</span>
+          </div>
+          <div class="fg-item">
+            <label for="sh-zip">Code postal *</label>
+            <input type="text" id="sh-zip" placeholder="75011" autocomplete="postal-code">
+            <span class="ferr" id="err-sh-zip">Ce champ est requis.</span>
+          </div>
+          <div class="fg-item">
+            <label for="sh-country">Pays *</label>
+            <input type="text" id="sh-country" placeholder="France" autocomplete="country-name" value="France">
+            <span class="ferr" id="err-sh-country">Ce champ est requis.</span>
+          </div>
+          <div class="fg-item">
+            <label for="sh-phone">Téléphone *</label>
+            <input type="tel" id="sh-phone" placeholder="+33 6 00 00 00 00" autocomplete="tel">
+            <span class="ferr" id="err-sh-phone">Ce champ est requis.</span>
+          </div>
+        </div>
+      </div>
+
       <button class="btn" id="payBtn">Obtenir mon guide annuel — 47€ →</button>
       <p class="guar">✓ Satisfait ou remboursé sous 7 jours, sans condition</p>
     </div>
@@ -290,6 +345,21 @@ footer a:hover{color:var(--accent)}
 <script>
 // Stars
 (function(){var sf=document.getElementById('sf');for(var i=0;i<55;i++){var s=document.createElement('div');s.className='st';var sz=Math.random()*2+1;s.style.cssText='width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;--d:'+(Math.random()*6+3)+'s;--o:'+(Math.random()*0.4+0.1)+';animation-delay:'+(Math.random()*8)+'s';sf.appendChild(s);}})();
+
+// Offer selection
+var selectedOffer='pdf';
+function selectOffer(offer){
+  selectedOffer=offer;
+  document.getElementById('offer-pdf').style.borderColor=offer==='pdf'?'var(--accent)':'var(--border)';
+  document.getElementById('offer-bundle').style.borderColor=offer==='bundle'?'var(--accent)':'var(--border)';
+  document.getElementById('shipping-fields').style.display=offer==='bundle'?'block':'none';
+  document.getElementById('payBtn').textContent=offer==='bundle'?'Commander le bundle — 67€ →':'Obtenir mon guide annuel — 47€ →';
+}
+
+// Country codes
+var COUNTRY_CODES={'france':'FR','belgique':'BE','suisse':'CH','canada':'CA','luxembourg':'LU','maroc':'MA','algérie':'DZ','tunisie':'TN','sénégal':'SN','côte d\'ivoire':'CI'};
+function getCountryCode(name){var k=name.toLowerCase().trim();return COUNTRY_CODES[k]||name.toUpperCase().substring(0,2);}
+
 
 // City autocomplete
 var selectedLat=null,selectedLon=null,selectedVille='';
@@ -334,7 +404,9 @@ document.addEventListener('click',function(e){if(!cityInput.contains(e.target)&&
 // Validation
 function validate(){
   var ok=true;
-  ['prenom','email','dob','ville'].forEach(function(id){
+  var fields=['prenom','email','dob','ville'];
+  if(selectedOffer==='bundle') fields=fields.concat(['sh-name','sh-address','sh-city','sh-zip','sh-country','sh-phone']);
+  fields.forEach(function(id){
     var el=document.getElementById(id);
     var err=document.getElementById('err-'+id);
     var val=el.value.trim();
@@ -354,8 +426,9 @@ function validate(){
   return ok;
 }
 
-['prenom','email','dob','ville'].forEach(function(id){
-  document.getElementById(id).addEventListener('input',function(){
+['prenom','email','dob','ville','sh-name','sh-address','sh-city','sh-zip','sh-country','sh-phone'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el)el.addEventListener('input',function(){
     this.classList.remove('err');
     document.getElementById('err-'+id).classList.remove('show');
   });
@@ -393,18 +466,28 @@ document.getElementById('payBtn').addEventListener('click',async function(){
   var birth_date=heure
     ?document.getElementById('dob').value+'T'+heure+':00'
     :document.getElementById('dob').value+'T12:00:00';
+  var body={
+    offer:selectedOffer,
+    prenom:document.getElementById('prenom').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    birth_date:birth_date,
+    latitude:lat,
+    longitude:lon,
+    ville:ville
+  };
+  if(selectedOffer==='bundle'){
+    body.shipping_name=document.getElementById('sh-name').value.trim();
+    body.shipping_address=document.getElementById('sh-address').value.trim();
+    body.shipping_city=document.getElementById('sh-city').value.trim();
+    body.shipping_zip=document.getElementById('sh-zip').value.trim();
+    body.shipping_country=getCountryCode(document.getElementById('sh-country').value.trim());
+    body.shipping_phone=document.getElementById('sh-phone').value.trim();
+  }
   try{
     var response=await fetch('https://web-production-37fb.up.railway.app/api/annee-astrologique/checkout',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        prenom:document.getElementById('prenom').value.trim(),
-        email:document.getElementById('email').value.trim(),
-        birth_date:birth_date,
-        latitude:lat,
-        longitude:lon,
-        ville:ville
-      })
+      body:JSON.stringify(body)
     });
     var data=await response.json();
     if(data.checkout_url){
@@ -415,7 +498,7 @@ document.getElementById('payBtn').addEventListener('click',async function(){
   }catch(err){
     console.error('Checkout error:',err);
     btn.disabled=false;
-    btn.textContent='Obtenir mon guide annuel — 47€ →';
+    btn.textContent=selectedOffer==='bundle'?'Commander le bundle — 67€ →':'Obtenir mon guide annuel — 47€ →';
     alert('Une erreur est survenue. Merci de réessayer ou d\'écrire à contact@guillaumeastro.com.');
   }
 });
