@@ -22,6 +22,11 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://guillaumeastro.com/compatibilite-astrologique</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
   <!-- Pages produits -->
   <url>
