@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Pages principales -->
+  <!-- Pages monument -->
   <url>
     <loc>https://guillaumeastro.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://guillaumeastro.com/theme-natal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/ascendant</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Pages produits -->
+  <url>
+    <loc>https://guillaumeastro.com/portrait-astral</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/poster</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/style-amoureux-astro</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://guillaumeastro.com/mission-de-vie</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/bebe-astral</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/annee-astrologique</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://guillaumeastro.com/newsletter</loc>
@@ -24,8 +61,83 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/maison-8-guide-complet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/7-signes-pluton-fort-theme-natal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/ascendant-signe-de-feu-amour</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/venus-scorpion-relation-amoureuse</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/venus-en-amour-decouvre-les-positions-qui-attirent-ton-match-astral</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/jupiter-en-carre-avec-le-soleil-le-2-avril-signification-et-impact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/compatibilite-gemeaux-lion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/jupiter-sextile-venus-chance-abondance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/compatibilite-amoureuse-cancer-verseau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/amour-signes-air</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/berlien-balance-enrichissement</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/compatibilite-signes-solaires-arnaque</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/horoscope-quotidien-ne-sert-a-rien</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/red-flags-astrologie-ce-que-tiktok-ne-dit-pas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Encyclopédie / Guides -->
+  <!-- Guides — hub -->
   <url>
     <loc>https://guillaumeastro.com/blog/guides/</loc>
     <changefreq>monthly</changefreq>
@@ -44,12 +156,52 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-2</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-3</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-4</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-5</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-6</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://guillaumeastro.com/blog/guides/maisons/maison-7</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-8</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-9</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://guillaumeastro.com/blog/guides/maisons/maison-10</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/maisons/maison-11</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -133,7 +285,52 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/gemeaux</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/cancer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://guillaumeastro.com/blog/guides/signes/lion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/vierge</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/balance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/scorpion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/sagittaire</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/capricorne</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/verseau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/signes/poissons</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -214,12 +411,12 @@
   <url>
     <loc>https://guillaumeastro.com/blog/guides/concepts/aspects</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://guillaumeastro.com/blog/guides/concepts/noeuds-lunaires</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://guillaumeastro.com/blog/guides/concepts/chiron</loc>
@@ -234,12 +431,12 @@
   <url>
     <loc>https://guillaumeastro.com/blog/guides/concepts/synastrie</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://guillaumeastro.com/blog/guides/concepts/transits</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://guillaumeastro.com/blog/guides/concepts/decans</loc>
@@ -271,7 +468,32 @@
   <url>
     <loc>https://guillaumeastro.com/blog/guides/techniques/revolution-solaire</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/techniques/retour-lunaire</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/techniques/profections-annuelles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/techniques/progressions-secondaires</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/techniques/composite</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/techniques/directions-primaires</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Guides Termes -->
@@ -282,6 +504,36 @@
   </url>
   <url>
     <loc>https://guillaumeastro.com/blog/guides/termes/parts-arabes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/termes/degres-critiques</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/termes/antiscion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/termes/cazimi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/termes/hors-limites</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/termes/dispositeur</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/guides/termes/etoiles-fixes</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -309,58 +561,6 @@
   </url>
   <url>
     <loc>https://guillaumeastro.com/blog/guides/personnalites/donald-trump</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Articles de blog -->
-  <url>
-    <loc>https://guillaumeastro.com/blog/maison-8-guide-complet</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/7-signes-pluton-fort-theme-natal</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/ascendant-signe-de-feu-amour</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/venus-scorpion-relation-amoureuse</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/venus-en-amour-decouvre-les-positions-qui-attirent-ton-match-astral</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/jupiter-en-carre-avec-le-soleil-le-2-avril-signification-et-impact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/compatibilite-gemeaux-lion</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/jupiter-sextile-venus-chance-abondance</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/compatibilite-amoureuse-cancer-verseau</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://guillaumeastro.com/blog/amour-signes-air</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
