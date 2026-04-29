@@ -161,6 +161,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/sceptiques-astrologie-ont-raison</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/ascendant-pas-votre-vrai-signe</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guillaumeastro.com/blog/opinion/noeuds-lunaires-chiron-lilith-ce-qui-est-fonde</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Guides — hub -->
   <url>
