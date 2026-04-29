@@ -145,11 +145,21 @@ function parseArticle(fileName) {
   };
 }
 
+function scanSubdir(subdir) {
+  const dir = path.join(BLOG_DIR, subdir);
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter((file) => file.endsWith('.html') && file !== 'index.html')
+    .map((file) => `${subdir}/${file}`);
+}
+
 module.exports = (req, res) => {
   try {
-    const files = fs.readdirSync(BLOG_DIR)
+    const rootFiles = fs.readdirSync(BLOG_DIR)
       .filter((file) => file.endsWith('.html'))
       .filter((file) => file !== 'index.html' && file !== '_template.html');
+
+    const files = [...rootFiles, ...scanSubdir('opinion')];
 
     const posts = files
       .map(parseArticle)
